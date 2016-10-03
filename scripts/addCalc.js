@@ -28,7 +28,7 @@ document.getElementById("calc").onclick = function calc() {
 
 	// main
 
-	var main_run = +document.getElementById("dimAmain").value / 2;
+/*	var main_run = +document.getElementById("dimAmain").value / 2;
 	var main_slope = +document.getElementById("main_pitch").value / 12;
 	var main_rise = main_run * main_slope;
 	var main_hyp = Math.sqrt(Math.pow(main_rise, 2) + Math.pow(main_run, 2));
@@ -43,12 +43,12 @@ document.getElementById("calc").onclick = function calc() {
 
 	var main_totalSurA = (main_surA + mainPie_surA - mainPieCvr_surA) / 33.3;
 	var main_totalCap = (+document.getElementById("dimBmain").value - (mainPie_peak * 2) + mainPie_hip) / 29.5;
-
+*/
 	// dormers
 
-		var mainDorm_run = document.getElementsByClassName("dimAdorm") / 2;
-		var mainDorm_slope = document.getElementsByClassName("dorm_pitch") / 12;
-		var mainDorm_rise = main_run * mainDorm_slope;
+		var mainDorm_run = document.getElementsByClassName("dimAdorm"); // / 2
+		var mainDorm_slope = document.getElementsByClassName("dorm_pitch"); // / 12
+/*		var mainDorm_rise = main_run * mainDorm_slope;
 		var mainDorm_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_run, 2));
 		var mainDorm_peak = mainDorm_rise / main_slope;
 		var mainDorm_valley = (Math.sqrt(Math.pow(mainDorm_peak, 2) + Math.pow(mainDorm_hyp, 2))) * 2;
@@ -57,16 +57,16 @@ document.getElementById("calc").onclick = function calc() {
 		var mainDormCvr_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_peak));
 		var mainDormCvr_surA = mainDorm_run * mainDorm_hyp;
 
-		var mainDormOvr_run = document.getElementsByClassName("dimBdorm") / 2;
-		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
-		var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
-		var mainDormOvr_peak = document.getElementsByClassName("dimCdorm") || 0;
-		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
+*/		var mainDormOvr_run = document.getElementsByClassName("dimBdorm"); // / 2
+//		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
+//		var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
+		var mainDormOvr_peak = document.getElementsByClassName("dimCdorm"); // || 0
+//		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
 		
 		var mainDorm_totalSurA = 0;
-		var mainDorm_totalCap = 0;
+//		var mainDorm_totalCap = 0;
 	
-	for (var i = 0; i < mainDorm_run.length; i++) {
+/*	for (var i = 0; i < mainDorm_run.length; i++) {
 		mainDorm_totalSurA += +mainDorm_surA[i].value + +mainDormOvr_surA[i].value - +mainDormCvr_surA[i].value;
 		mainDorm_totalCap += +mainDorm_peak[i].value + +mainDormOvr_peak[i].value;
 	}
@@ -85,5 +85,12 @@ document.getElementById("calc").onclick = function calc() {
 	+ "<br>Total Valley: "
 	+ totalValley.toFixed(2)
 	+ " Pieces";
-	
+*/
+
+// *test* document.getElementById("total").innerHTML = ;
+
+	for (var i = 0; i < mainDorm_run.length; i++) {
+			mainDorm_totalSurA += +mainDorm_run[i].value + +mainDormOvr_run[i].value + +mainDormOvr_peak[i].value + +mainDorm_slope[i].value;
+		}	
+	document.getElementById("total").innerHTML = mainDorm_totalSurA;
 }
