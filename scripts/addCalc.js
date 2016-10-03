@@ -48,11 +48,14 @@ document.getElementById("calc").onclick = function calc() {
 	// dormers
 
 		var mainDorm_runArr = document.getElementsByClassName('dimAdorm'); // / 2
+		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch'); // / 12
+		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm"); // / 2
+		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); // || 0
+		var mainDorm_totalSurA = 0;
 	
 	for (var i = 0; i < mainDorm_runArr.length; i++) {
 
-		var mainDorm_run = (+mainDorm_runArr[i].value / 2);
-		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch'); // / 12
+/*		var mainDorm_run = (+mainDorm_runArr[i].value / 2);
 		var mainDorm_slope = (+mainDorm_slopeArr[i].value / 12);
 /*		var mainDorm_rise = mainDorm_run * mainDorm_slope;
 		var mainDorm_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_run, 2));
@@ -62,21 +65,18 @@ document.getElementById("calc").onclick = function calc() {
 
 		var mainDormCvr_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_peak));
 		var mainDormCvr_surA = mainDorm_run * mainDorm_hyp;
-*/
-		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm"); // / 2
+
 		var mainDormOvr_run = (+mainDormOvr_runArr[i].value / 2);
 //		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
 //		var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
-		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); // || 0
 		var mainDormOvr_peak = (+mainDormOvr_peakArr[i].value || 0);
 //		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
 
-		var mainDorm_totalSurA = 0;
 //		var mainDorm_totalCap = 10;
 			
 //		mainDorm_totalSurA += +mainDorm_surA[i].value + +mainDormOvr_surA[i].value - +mainDormCvr_surA[i].value;
 //		mainDorm_totalCap += +mainDorm_peak[i].value + +mainDormOvr_peak[i].value;
-
+*/
 		mainDorm_totalSurA += +mainDorm_runArr[i].value * +mainDorm_slopeArr[i].value;
 	}
 //	var totalSurA = (main_totalSurA + mainDorm_totalSurA) / 33.3;
