@@ -1,6 +1,4 @@
 
-// dormers
-
 document.getElementById("add").onclick = function addDormer() {
 	var container = document.getElementById('container');
 	var dimAdorm = document.createElement("input");
@@ -80,7 +78,7 @@ document.getElementById("calc").onclick = function calc() {
 			var mainDormOvrH_surA = 0;
 		}
 		else {
-			mainDormOvrH_surA = (mainDormOvrH_hyp * 2) + mainDorm_run;
+			mainDormOvrH_surA = (mainDormOvrH_hyp + mainDorm_run) * 2;
 		}
 
 		mainDorm_totalCap += mainDorm_peak + mainDormOvr_peak;
@@ -89,6 +87,8 @@ document.getElementById("calc").onclick = function calc() {
 	var totalSurA = (main_totalSurA + mainDorm_totalSurA) / 33.3;
 	var totalCap = (main_totalCap + mainDorm_totalCap) / 29.5;
 	var totalValley = mainDorm_valley / 8;
+
+	// *test* console.log(mainDormOvr_peak);
 
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
@@ -100,4 +100,5 @@ document.getElementById("calc").onclick = function calc() {
 	+ "<br>Total Valley: "
 	+ totalValley.toFixed(2)
 	+ " Pieces";
+
 }
