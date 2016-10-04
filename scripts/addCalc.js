@@ -47,10 +47,10 @@ document.getElementById("calc").onclick = function calc() {
 
 	// dormers
 
-		var mainDorm_runArr = document.getElementsByClassName('dimAdorm'); // / 2
-		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch'); // / 12
-		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm"); // / 2
-		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); // || 0
+		var mainDorm_runArr = document.getElementsByClassName('dimAdorm');
+		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch');
+		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm");
+		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); 
 		var mainDorm_totalSurA = 0;
 		var mainDorm_totalCap = 0;
 	
@@ -73,19 +73,23 @@ document.getElementById("calc").onclick = function calc() {
 		var mainDormOvr_peak = (+mainDormOvr_peakArr[i].value || 0);
 		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
 
+		var mainDormOvrH_rise = mainDormOvr_peak * main_slope;
+		var mainDormOvrH_hyp = Math.sqrt(Math.pow(mainDormOvrH_rise, 2) + Math.pow(mainDormOvr_peak, 2))
+
+		if (mainDormOvr_run > mainDorm_run || mainDormOvr_peak === 0) {
+			var mainDormOvrH_surA = 0;
+		}
+		else {
+			mainDormOvrH_surA = (mainDormOvrH_hyp * 2) + mainDorm_run;
+		}
+
 		mainDorm_totalCap += mainDorm_peak + mainDormOvr_peak;
-/*			
-//		mainDorm_totalSurA += +mainDorm_surA[i].value + +mainDormOvr_surA[i].value - +mainDormCvr_surA[i].value;
-//		mainDorm_totalCap += +mainDorm_peak[i].value + +mainDormOvr_peak[i].value;
-*/
-		mainDorm_totalSurA += mainDorm_surA + mainDormOvr_surA - mainDormCvr_surA;
+		mainDorm_totalSurA += mainDorm_surA + mainDormOvr_surA + mainDormOvrH_surA - mainDormCvr_surA;
 	}
 	var totalSurA = (main_totalSurA + mainDorm_totalSurA) / 33.3;
 	var totalCap = (main_totalCap + mainDorm_totalCap) / 29.5;
 	var totalValley = mainDorm_valley / 8;
 
-	// *test* document.getElementById("total").innerHTML = 
-//	console.log(totalSurA);
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
 	+ totalSurA.toFixed(2)
@@ -96,13 +100,4 @@ document.getElementById("calc").onclick = function calc() {
 	+ "<br>Total Valley: "
 	+ totalValley.toFixed(2)
 	+ " Pieces";
-
-
-// *test* document.getElementById("total").innerHTML = ;
-
-/*	for (var i = 0; i < mainDorm_run.length; i++) {
-			mainDorm_totalSurA += +mainDorm_run[i].value + test + +mainDormOvr_peak[i].value + +mainDorm_slope[i].value;
-		}	
-	document.getElementById("total").innerHTML = mainDorm_totalSurA;
-*/
 }
