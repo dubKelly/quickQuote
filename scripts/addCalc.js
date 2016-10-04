@@ -36,7 +36,7 @@ document.getElementById("calc").onclick = function calc() {
 	var mainPie_slope = (+document.getElementById("mainPie_pitch").value) / 12;
 	var mainPie_peak = main_rise / mainPie_slope;
 	var mainPie_hyp = Math.sqrt(Math.pow(main_rise, 2) + Math.pow(mainPie_peak, 2));
-	var mainPie_surA = main_run * mainPie_hyp;
+	var mainPie_surA = (main_run * mainPie_hyp) * 2;
 	var mainPie_hip = (Math.sqrt(Math.pow((main_run / 2), 2) + Math.pow(mainPie_hyp, 2))) * 4;
 	var mainPieCvr_surA = (mainPie_peak * main_hyp) * 2;
 
