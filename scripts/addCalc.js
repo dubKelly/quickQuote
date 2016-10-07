@@ -1,6 +1,5 @@
-
-document.getElementById("add").onclick = function addDormer() {
-	var container = document.getElementById('container');
+document.getElementById("mainDormer").onclick = function addDormer() {
+	var dormContainer = document.getElementById("dormContainer");
 	var dimAdorm = document.createElement("input");
 	var dimBdorm = document.createElement("input");
 	var dorm_pitch = document.createElement("input");
@@ -43,7 +42,7 @@ document.getElementById("calc").onclick = function calc() {
 	var main_totalSurA = (main_surA + mainPie_surA - mainPieCvr_surA);
 	var main_totalCap = (+document.getElementById("dimBmain").value - (mainPie_peak * 2) + mainPie_hip);
 
-	// dormers
+	// mainDormers
 
 		var mainDorm_runArr = document.getElementsByClassName('dimAdorm');
 		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch');

@@ -3,24 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="styleSheets/hipStyles.css">
 	<title>Hip</title>
 </head>
 <body>
+<div class="header">
+	<h1>Header</h1>
+</div>
 <div class="main">
-	<div class="data">
-		<input type="text" id="dimAmain" placeholder="Dimension A" value="10">
-		<input type="text" id="dimBmain" placeholder="Dimension B" value="20">
-		<input type="text" id="main_pitch" placeholder="Main Pitch" value="6">
-		<input type="text" id="mainPie_pitch" placeholder="Pie Pitch" value="8">	
-		<div id="container">	
-		</div>
-		<button id="add">Add+</button>
-		<button id="calc">Calculate</button>
-		<p id="total"></p>
-	</div>
 	<div class="visual">
-		
+		<h1>[{Image}]</h1>
 	</div>
+	<div class="data">
+		<div class="input">
+			<p class="length">Length:</p>
+				<button class="add" id="mainDormer">Add+</button>
+				<input type="text" id="dimAmain" placeholder="Dimension A" value="10">
+				<input type="text" id="main_pitch" placeholder="Main Pitch" value="6">
+			<p>Width:</p>
+				<button class="add" id="pieDormer">Add+</button>
+				<input type="text" id="dimBmain" placeholder="Dimension B" value="20">
+				<input type="text" id="mainPie_pitch" placeholder="Pie Pitch" value="8">	
+			<button id="calc">Calculate</button>
+			<p id="total"></p>
+			<div id="container">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<h1>Footer</h1>
 </div>
 
 <script src="scripts/addCalc.js"></script>
