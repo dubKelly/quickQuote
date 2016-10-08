@@ -1,5 +1,8 @@
+
+
 document.getElementById("mainDormer").onclick = function addDormer() {
-	var dormContainer = document.getElementById("dormContainer");
+	document.getElementById("dormData").style.display = "block";
+	var dormData = document.getElementById("dormInput");
 	var dimAdorm = document.createElement("input");
 	var dimBdorm = document.createElement("input");
 	var dorm_pitch = document.createElement("input");
@@ -16,10 +19,10 @@ document.getElementById("mainDormer").onclick = function addDormer() {
 	dimCdorm.className = "dimCdorm";
 	dimCdorm.placeholder = "Dimension C";
 	dimCdorm.value = 4;
-	container.appendChild(dimAdorm);
-	container.appendChild(dimBdorm);
-	container.appendChild(dorm_pitch);
-	container.appendChild(dimCdorm);
+	dormData.appendChild(dimAdorm);
+	dormData.appendChild(dimBdorm);
+	dormData.appendChild(dorm_pitch);
+	dormData.appendChild(dimCdorm);
 }
 
 document.getElementById("calc").onclick = function calc() {
