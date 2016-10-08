@@ -1,37 +1,40 @@
+document.getElementById("mainAdd").onclick = function mainAdd() {
+	document.getElementById("mainData").style.display = "block";
 
+	document.getElementById("gableDorm").onclick = function addDormer() {
+		document.getElementById("mainData").style.display = "none";
+		document.getElementById("dormData").style.display = "block";
+		var dormData = document.getElementById("dormInput");
+		var dimAdorm = document.createElement("input");
+		dimAdorm.className = "dimAdorm";
+		dimAdorm.placeholder = "Dimension A";
+		dimAdorm.value = 6;
+		dormData.appendChild(dimAdorm);
+		var dimBdorm = document.createElement("input");
+		dimBdorm.className = "dimBdorm";
+		dimBdorm.placeholder = "Dimension B";
+		dimBdorm.value = 8;
+		dormData.appendChild(dimBdorm);
+		var dorm_pitch = document.createElement("input");
+		dorm_pitch.className = "dorm_pitch";
+		dorm_pitch.placeholder = "Pitch";
+		dorm_pitch.value = 10;
+		dormData.appendChild(dorm_pitch);
+		var dimCdorm = document.createElement("input");
+		dimCdorm.className = "dimCdorm";
+		dimCdorm.placeholder = "Dimension C";
+		dimCdorm.value = 4;
+		dormData.appendChild(dimCdorm);
+		var add = document.createElement("select");
+		add.appendChild(new Option("Select", "select"));
+		add.appendChild(new Option("Hip", "hip"));
+		add.appendChild(new Option("Double Gable", "doubleGable"));
+		dormData.appendChild(add);
+	}
 
-document.getElementById("mainDormer").onclick = function addDormer() {
-	document.getElementById("dormData").style.display = "block";
-	var dormData = document.getElementById("dormInput");
-	var dimAdorm = document.createElement("input");
-	dimAdorm.className = "dimAdorm";
-	dimAdorm.placeholder = "Dimension A";
-	dimAdorm.value = 6;
-	dormData.appendChild(dimAdorm);
-	var dimBdorm = document.createElement("input");
-	dimBdorm.className = "dimBdorm";
-	dimBdorm.placeholder = "Dimension B";
-	dimBdorm.value = 8;
-	dormData.appendChild(dimBdorm);
-	var dorm_pitch = document.createElement("input");
-	dorm_pitch.className = "dorm_pitch";
-	dorm_pitch.placeholder = "Pitch";
-	dorm_pitch.value = 10;
-	dormData.appendChild(dorm_pitch);
-	var dimCdorm = document.createElement("input");
-	dimCdorm.className = "dimCdorm";
-	dimCdorm.placeholder = "Dimension C";
-	dimCdorm.value = 4;
-	dormData.appendChild(dimCdorm);
-	var add = document.createElement("select");
-	add.appendChild(new Option("Select", "select"));
-	add.appendChild(new Option("Hip", "hip"));
-	add.appendChild(new Option("Double Gable", "doubleGable"));
-	dormData.appendChild(add);
-}
-
-document.getElementById("done").onclick = function done() {
-	document.getElementById("dormData").style.display = "none";
+	document.getElementById("done").onclick = function done() {
+		document.getElementById("dormData").style.display = "none";
+	}
 }
 
 document.getElementById("calc").onclick = function calc() {

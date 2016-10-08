@@ -1,7 +1,8 @@
 html, body {
 	height: 100%;
 	margin: 0px;
-	background-color: #333333;
+	color: white;
+	background-color: #282828;
 }
 .header {
 	width: 100%;
@@ -23,11 +24,11 @@ html, body {
 	text-align: center;
 	float: left;
 	position: relative;
-	border-left: 1px solid black;
+	border-left: 1px solid #ff6a5c;
 }
 .input {
 	width: 66%;
-	height: 100%;
+	height: 80%;
 	margin: auto;
 }
 	.input p {
@@ -40,23 +41,27 @@ html, body {
 		float: left;
 		width: 25%;
 	}
-#dormData {
+.addOuter {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 	display: none;
-	background-color: green;
+	background-color: #282828;
 }
-#dormInput {
-	width: 66%;
-	height: 80%;
-	margin: auto;
-}
-.buttons {
+.addInner {
 	width: 100%;
-	height: 20%;
+	height: 80%;
+	overflow-y: scroll;
+}
+.dataHead {
+	width: 100%;
+	height: 10%;
+}
+.dataFoot {
+	width: 100%;
+	height: 10%;
 }
 .footer {
 	width: 100%;
@@ -68,21 +73,22 @@ h1 {
 }
 input {
 	display: block;
-	width: 100%;
+	width: 66%;
 	height: 10%;
 	margin: 2% auto 2% auto;
-	background-color: transparent;
-	border: 1px solid black;
+	color: white;
+	background-color: #056571;
+	border: 1px solid #ff6a5c;
 	text-align: center;
 }
 button {
 	margin: 5%;
 	border: none;
+	color: white;
 	background-color: transparent;
 }
 #total {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: blue;
 }

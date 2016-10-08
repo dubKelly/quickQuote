@@ -8,36 +8,54 @@
 </head>
 <body>
 <div class="header">
-	<h1>Header</h1>
 </div>
 <div class="main">
 	<div class="visual">
-		<h1>[{Image}]</h1>
 		<p id="total"></p>
 	</div>
 	<div class="data">
-		<div id="dormData">
-			<div id="dormInput">
-			</div>
-			<div class="buttons">
-				<button id="done">Done</button>
-			</div>
+		<div class="dataHead">
 		</div>
 		<div class="input">
 			<p class="length">Length:</p>
-				<button class="add" id="mainDormer">Add+</button>
+				<button class="add" id="mainAdd">Add+</button>
 				<input type="text" id="dimAmain" placeholder="Dimension A" value="10">
 				<input type="text" id="main_pitch" placeholder="Main Pitch" value="6">
 			<p>Width:</p>
-				<button class="add" id="pieDormer">Add+</button>
+				<button class="add" id="mainPieAdd">Add+</button>
 				<input type="text" id="dimBmain" placeholder="Dimension B" value="20">
 				<input type="text" id="mainPie_pitch" placeholder="Pie Pitch" value="8">	
+		</div>
+		<div class="addOuter" id="mainData">
+			<div class="dataHead">
+			</div>
+			<div class="addInner" id="mainList">
+				<button class="buttonList" id="gableDorm">Gable Dormer</button><br>
+				<button class="buttonList" id="shedDorm">Shed Dormer</button><br>
+				<button class="buttonList" id="hipDorm">Hipped Dormer</button><br>
+				<button class="buttonList" id="gableCross">Gable Cross</button><br>
+				<button class="buttonList" id="hipCross">Hipped Cross</button><br>
+				<button class="buttonList" id="gableInter">Gable Intersecting</button><br>
+				<button class="buttonList" id="hipInter">Hipped Intersecting</button><br>
+			</div>
+			<div class="dataFoot">
+			</div>
+		</div>
+		<div class="addOuter" id="dormData">
+			<div class="dataHead">
+			</div>
+			<div class="addInner" id="dormInput">
+			</div>
+			<div class="dataFoot">
+				<button id="done">Done</button>
+			</div>
+		</div>
+		<div class="dataFoot">
 			<button id="calc">Calculate</button>
 		</div>
 	</div>
 </div>
 <div class="footer">
-	<h1>Footer</h1>
 </div>
 <script src="scripts/addCalc.js"></script>
 </body>
