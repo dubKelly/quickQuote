@@ -4,25 +4,34 @@ document.getElementById("mainDormer").onclick = function addDormer() {
 	document.getElementById("dormData").style.display = "block";
 	var dormData = document.getElementById("dormInput");
 	var dimAdorm = document.createElement("input");
-	var dimBdorm = document.createElement("input");
-	var dorm_pitch = document.createElement("input");
-	var dimCdorm = document.createElement("input");
 	dimAdorm.className = "dimAdorm";
 	dimAdorm.placeholder = "Dimension A";
 	dimAdorm.value = 6;
+	dormData.appendChild(dimAdorm);
+	var dimBdorm = document.createElement("input");
 	dimBdorm.className = "dimBdorm";
 	dimBdorm.placeholder = "Dimension B";
 	dimBdorm.value = 8;
+	dormData.appendChild(dimBdorm);
+	var dorm_pitch = document.createElement("input");
 	dorm_pitch.className = "dorm_pitch";
 	dorm_pitch.placeholder = "Pitch";
 	dorm_pitch.value = 10;
+	dormData.appendChild(dorm_pitch);
+	var dimCdorm = document.createElement("input");
 	dimCdorm.className = "dimCdorm";
 	dimCdorm.placeholder = "Dimension C";
 	dimCdorm.value = 4;
-	dormData.appendChild(dimAdorm);
-	dormData.appendChild(dimBdorm);
-	dormData.appendChild(dorm_pitch);
 	dormData.appendChild(dimCdorm);
+	var add = document.createElement("select");
+	add.appendChild(new Option("Select", "select"));
+	add.appendChild(new Option("Hip", "hip"));
+	add.appendChild(new Option("Double Gable", "doubleGable"));
+	dormData.appendChild(add);
+}
+
+document.getElementById("done").onclick = function done() {
+	document.getElementById("dormData").style.display = "none";
 }
 
 document.getElementById("calc").onclick = function calc() {
@@ -47,12 +56,13 @@ document.getElementById("calc").onclick = function calc() {
 
 	// mainDormers
 
-		var mainDorm_runArr = document.getElementsByClassName('dimAdorm');
-		var mainDorm_slopeArr = document.getElementsByClassName('dorm_pitch');
+		var mainDorm_runArr = document.getElementsByClassName("dimAdorm");
+		var mainDorm_slopeArr = document.getElementsByClassName("dorm_pitch");
 		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm");
 		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); 
 		var mainDorm_totalSurA = 0;
 		var mainDorm_totalCap = 0;
+		var mainDorm_totalValley = 0;
 	
 	for (var i = 0; i < mainDorm_runArr.length; i++) {
 
@@ -85,10 +95,11 @@ document.getElementById("calc").onclick = function calc() {
 
 		mainDorm_totalCap += mainDorm_peak + mainDormOvr_peak;
 		mainDorm_totalSurA += mainDorm_surA + mainDormOvr_surA + mainDormOvrH_surA - mainDormCvr_surA;
+		mainDorm_totalValley += mainDorm_valley;
 	}
 	var totalSurA = (main_totalSurA + mainDorm_totalSurA) / 33.3;
 	var totalCap = (main_totalCap + mainDorm_totalCap) / 29.5;
-	var totalValley = mainDorm_valley / 8;
+	var totalValley = mainDorm_totalValley / 8;
 
 	// *test* console.log(mainDormOvr_peak);
 

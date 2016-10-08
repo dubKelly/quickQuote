@@ -15,6 +15,7 @@ html, body {
 	width: 66%;
 	height: 100%;
 	float: left;
+	position: relative;
 }
 .data {
 	width: 33%;
@@ -22,6 +23,7 @@ html, body {
 	text-align: center;
 	float: left;
 	position: relative;
+	border-left: 1px solid black;
 }
 .input {
 	width: 66%;
@@ -49,15 +51,18 @@ html, body {
 }
 #dormInput {
 	width: 66%;
-	height: 100%;
+	height: 80%;
 	margin: auto;
+}
+.buttons {
+	width: 100%;
+	height: 20%;
 }
 .footer {
 	width: 100%;
 	height: 20%;
 }
 h1 {
-	border: 1px solid red;
 	margin: 0px;
 	text-align: center;
 }
@@ -72,6 +77,8 @@ input {
 }
 button {
 	margin: 5%;
+	border: none;
+	background-color: transparent;
 }
 #total {
 	position: absolute;
