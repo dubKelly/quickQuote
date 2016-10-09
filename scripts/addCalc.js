@@ -1,32 +1,58 @@
-document.getElementById("mainAdd").onclick = function mainAdd() {
+var dynId = 0;
+var negId = 0;
+	function idGen() {
+		dynId++;
+		negId = dynId - 1;
+		console.log(dynId);
+	}
+
+	function mainAdd() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
 
+
 	document.getElementById("gableDorm").onclick = function addDormer() {
-		document.getElementById("data");
 		document.getElementById("mainList").style.display = "none";
 		document.getElementById("dormInput").style.display = "block";
-		var dormData = document.getElementById("dormInput");
+		var dormInput = document.getElementById("dormInput");
+		var subInput = document.createElement("div");
+		subInput.className = "inner";
+		subInput.id = "subInput" + dynId;
+		dormInput.appendChild(subInput);
 		var dimAdorm = document.createElement("input");
 		dimAdorm.className = "dimAdorm";
 		dimAdorm.placeholder = "Dimension A";
 		dimAdorm.value = 6;
-		dormData.appendChild(dimAdorm);
+		subInput.appendChild(dimAdorm);
 		var dimBdorm = document.createElement("input");
 		dimBdorm.className = "dimBdorm";
 		dimBdorm.placeholder = "Dimension B";
 		dimBdorm.value = 8;
-		dormData.appendChild(dimBdorm);
+		subInput.appendChild(dimBdorm);
 		var dorm_pitch = document.createElement("input");
 		dorm_pitch.className = "dorm_pitch";
 		dorm_pitch.placeholder = "Pitch";
 		dorm_pitch.value = 10;
-		dormData.appendChild(dorm_pitch);
+		subInput.appendChild(dorm_pitch);
 		var dimCdorm = document.createElement("input");
 		dimCdorm.className = "dimCdorm";
 		dimCdorm.placeholder = "Dimension C";
 		dimCdorm.value = 4;
-		dormData.appendChild(dimCdorm);
+		subInput.appendChild(dimCdorm);
+		var done = document.createElement("button");
+		done.id = "done";
+		done.innerHTML = "Done";
+		subInput.appendChild(done);
+		var dormAdd = document.createElement("button");
+		dormAdd.id = "dormAdd";
+		dormAdd.innerHTML = "Add+";
+		subInput.appendChild(dormAdd);
+		document.getElementById("subInput" + negId).style.display = "none";
+		
+		document.getElementById("done").onclick = function done() {
+			document.getElementById("dormInput").style.display = "none";
+			document.getElementById("mainInput").style.display = "block";
+		}
 	}
 }
 
