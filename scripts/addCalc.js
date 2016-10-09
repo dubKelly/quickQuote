@@ -1,9 +1,11 @@
 document.getElementById("mainAdd").onclick = function mainAdd() {
-	document.getElementById("mainData").style.display = "block";
+	document.getElementById("mainInput").style.display = "none";
+	document.getElementById("mainList").style.display = "block";
 
 	document.getElementById("gableDorm").onclick = function addDormer() {
-		document.getElementById("mainData").style.display = "none";
-		document.getElementById("dormData").style.display = "block";
+		document.getElementById("data");
+		document.getElementById("mainList").style.display = "none";
+		document.getElementById("dormInput").style.display = "block";
 		var dormData = document.getElementById("dormInput");
 		var dimAdorm = document.createElement("input");
 		dimAdorm.className = "dimAdorm";
@@ -25,15 +27,6 @@ document.getElementById("mainAdd").onclick = function mainAdd() {
 		dimCdorm.placeholder = "Dimension C";
 		dimCdorm.value = 4;
 		dormData.appendChild(dimCdorm);
-		var add = document.createElement("select");
-		add.appendChild(new Option("Select", "select"));
-		add.appendChild(new Option("Hip", "hip"));
-		add.appendChild(new Option("Double Gable", "doubleGable"));
-		dormData.appendChild(add);
-	}
-
-	document.getElementById("done").onclick = function done() {
-		document.getElementById("dormData").style.display = "none";
 	}
 }
 
