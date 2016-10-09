@@ -40,19 +40,21 @@ var negId = 0;
 		dimCdorm.value = 4;
 		subInput.appendChild(dimCdorm);
 		var done = document.createElement("button");
-		done.id = "done";
+		done.className = "done";
 		done.innerHTML = "Done";
 		subInput.appendChild(done);
+		var doneArr = document.getElementsByClassName("done");
+		for (var i = 0; i < doneArr.length; i++) {
+			doneArr[i].onclick = function done() {
+			document.getElementById("dormInput").style.display = "none";
+			document.getElementById("mainInput").style.display = "block";
+			}
+		}
 		var dormAdd = document.createElement("button");
 		dormAdd.id = "dormAdd";
 		dormAdd.innerHTML = "Add+";
 		subInput.appendChild(dormAdd);
 		document.getElementById("subInput" + negId).style.display = "none";
-		
-		document.getElementById("done").onclick = function done() {
-			document.getElementById("dormInput").style.display = "none";
-			document.getElementById("mainInput").style.display = "block";
-		}
 	}
 }
 
