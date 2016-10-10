@@ -16,18 +16,18 @@
 	<div class="data">
 		<div class="inner" id="mainInput">
 			<p class="length">Length:</p>
-				<button class="add" id="mainAdd" onclick="idGen(); mainAdd(); mainPush();">Add+</button>
+				<button class="add" id="mainAdd" onclick="idGen(); mainAdd();">Add+</button>
 				<input type="text" id="dimAmain" placeholder="Dimension A" value="30">
 				<input type="text" id="main_pitch" placeholder="Main Pitch" value="6">
 			<p>Width:</p>
-				<button class="add" id="mainPieAdd" onclick="piePush();">Add+</button>
+				<button class="add" id="mainPieAdd" onclick="idGen(); mainAdd();">Add+</button>
 				<input type="text" id="dimBmain" placeholder="Dimension B" value="60">
 				<input type="text" id="mainPie_pitch" placeholder="Pie Pitch" value="8">	
 				<button id="calc">Calculate</button>
 		</div>
 		<div class="inner" id="mainList">
 			<ul>
-				<li class="mainList" id="gableDorm">Gable Dormer</li>
+				<li class="mainList" id="gableDorm" onclick="addDormer();">Gable Dormer</li>
 				<li class="mainList" id="shedDorm">Shed Dormer</li>
 				<li class="mainList" id="hipDorm">Hipped Dormer</li>
 				<li class="mainList" id="gableCross">Gable Cross</li>

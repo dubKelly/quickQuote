@@ -5,21 +5,12 @@ var negId = 0;
 		negId = dynId - 1;
 		console.log(dynId);
 	}
-var mainInputArr = [];
-function mainPush() {
-	mainInputArr.push("mainAdd");
-	console.log(mainInputArr);
-}
-function piePush() {
-	mainInputArr.push("pieAdd");
-	console.log(mainInputArr);
-}
 function mainAdd() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
+}
 
-
-	document.getElementById("gableDorm").onclick = function addDormer() {
+	function addDormer() {
 		document.getElementById("mainList").style.display = "none";
 		document.getElementById("subInput" + negId).style.display = "none";
 		document.getElementById("dormInput").style.display = "block";
@@ -28,6 +19,17 @@ function mainAdd() {
 		subInput.className = "inner";
 		subInput.id = "subInput" + dynId;
 		dormInput.appendChild(subInput);
+		var dormNav = document.createElement("UL");
+		dormNav.className = "dormNav";
+		subInput.appendChild(dormNav);
+			var gableNav = document.createElement("LI");
+			gableNav.className = "gableNav";
+			gableNav.innerHTML = "Gable";
+			dormNav.appendChild(gableNav);
+			var hipNav = document.createElement("LI");
+			hipNav.className = "hipNav";
+			hipNav.innerHTML = "Hipped";
+			dormNav.appendChild(hipNav);
 		var dimAdorm = document.createElement("input");
 		dimAdorm.className = "dimAdorm";
 		dimAdorm.placeholder = "Dimension A";
@@ -48,6 +50,11 @@ function mainAdd() {
 		dimCdorm.placeholder = "Dimension C";
 		dimCdorm.value = 6;
 		subInput.appendChild(dimCdorm);
+		var dormPie_pitch = document.createElement("input");
+		dormPie_pitch.className = "dormPie_pitch";
+		dormPie_pitch.id = "dormPie_pitch";
+		dormPie_pitch.placeholder = "Pie Pitch";
+		subInput.appendChild(dormPie_pitch);
 		var done = document.createElement("button");
 		done.className = "done";
 		done.innerHTML = "Done";
@@ -59,12 +66,20 @@ function mainAdd() {
 			document.getElementById("mainInput").style.display = "block";
 			}
 		}
-		var dormAdd = document.createElement("button");
-		dormAdd.id = "dormAdd";
-		dormAdd.innerHTML = "Add+";
-		subInput.appendChild(dormAdd);
+			var gableNavArr = document.getElementsByClassName("gableNav");
+			for (var i = 0; i < gableNav.length; i++) {
+				gableNav[i].onclick = function gableNav() {
+					document.getElementsByClassName("dormPie_pitch").style.display = "none";
+				}
+			}
+			var hipNavArr = document.getElementsByClassName("hipNav");
+			for (var i = 0; i < hipNavArr.length; i++) {
+				hipNavArr[i].onclick = function hipNav() {
+					document.getElementsByClassName("dormPie_pitch").style.display = "block";
+				}
+			}
 	}
-}
+
 
 document.getElementById("calc").onclick = function calc() {
 
