@@ -1,6 +1,7 @@
 html, body {
 	height: 100%;
 	margin: 0px;
+	font-size: 20px;
 	color: white;
 	background-color: #282828;
 }
@@ -36,7 +37,7 @@ html, body {
 		text-align: left;
 		float: left;
 		width: 65%;
-		margin: 5%;
+		margin: 5% 5% 10% 5%;
 	}
 	.add {
 		float: left;
@@ -46,8 +47,18 @@ html, body {
 		color: white;
 		background-color: transparent;
 	}
+	#calc {
+		width: 50%;
+		height: 10%;
+		border: none;
+		border-radius: 2px;
+		margin: 5%;
+		color: white;
+		background-color: #ff6a5c;
+	}
 	.btnLst {
 		width: 100%;
+		margin: 7.14% 0 7.14% 0;
 		border: none;
 		color: white;
 		background-color: transparent;
@@ -63,11 +74,12 @@ h1 {
 input {
 	display: block;
 	width: 66%;
-	height: 10%;
-	margin: 2% auto 2% auto;
+	height: 8%;
+	margin: 5% auto 5% auto;
+	border: none;
+	border-radius: 2px;
 	color: white;
-	background-color: #056571;
-	border: 1px solid #ff6a5c;
+	background-color: grey;
 	text-align: center;
 }
 #mainList {
@@ -77,9 +89,6 @@ input {
 	display: none;
 }
 #total {
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 #subInput0 {
 	display: none;

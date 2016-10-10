@@ -5,14 +5,23 @@ var negId = 0;
 		negId = dynId - 1;
 		console.log(dynId);
 	}
-
-	function mainAdd() {
+var mainInputArr = [];
+function mainPush() {
+	mainInputArr.push("mainAdd");
+	console.log(mainInputArr);
+}
+function piePush() {
+	mainInputArr.push("pieAdd");
+	console.log(mainInputArr);
+}
+function mainAdd() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
 
 
 	document.getElementById("gableDorm").onclick = function addDormer() {
 		document.getElementById("mainList").style.display = "none";
+		document.getElementById("subInput" + negId).style.display = "none";
 		document.getElementById("dormInput").style.display = "block";
 		var dormInput = document.getElementById("dormInput");
 		var subInput = document.createElement("div");
@@ -22,12 +31,12 @@ var negId = 0;
 		var dimAdorm = document.createElement("input");
 		dimAdorm.className = "dimAdorm";
 		dimAdorm.placeholder = "Dimension A";
-		dimAdorm.value = 6;
+		dimAdorm.value = 10;
 		subInput.appendChild(dimAdorm);
 		var dimBdorm = document.createElement("input");
 		dimBdorm.className = "dimBdorm";
 		dimBdorm.placeholder = "Dimension B";
-		dimBdorm.value = 8;
+		dimBdorm.value = 10;
 		subInput.appendChild(dimBdorm);
 		var dorm_pitch = document.createElement("input");
 		dorm_pitch.className = "dorm_pitch";
@@ -37,7 +46,7 @@ var negId = 0;
 		var dimCdorm = document.createElement("input");
 		dimCdorm.className = "dimCdorm";
 		dimCdorm.placeholder = "Dimension C";
-		dimCdorm.value = 4;
+		dimCdorm.value = 6;
 		subInput.appendChild(dimCdorm);
 		var done = document.createElement("button");
 		done.className = "done";
@@ -54,7 +63,6 @@ var negId = 0;
 		dormAdd.id = "dormAdd";
 		dormAdd.innerHTML = "Add+";
 		subInput.appendChild(dormAdd);
-		document.getElementById("subInput" + negId).style.display = "none";
 	}
 }
 

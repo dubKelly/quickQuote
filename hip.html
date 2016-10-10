@@ -16,23 +16,32 @@
 	<div class="data">
 		<div class="inner" id="mainInput">
 			<p class="length">Length:</p>
-				<button class="add" id="mainAdd" onclick="idGen(); mainAdd();">Add+</button>
-				<input type="text" id="dimAmain" placeholder="Dimension A" value="10">
+				<button class="add" id="mainAdd" onclick="idGen(); mainAdd(); mainPush();">Add+</button>
+				<input type="text" id="dimAmain" placeholder="Dimension A" value="30">
 				<input type="text" id="main_pitch" placeholder="Main Pitch" value="6">
 			<p>Width:</p>
-				<button class="add" id="mainPieAdd">Add+</button>
-				<input type="text" id="dimBmain" placeholder="Dimension B" value="20">
+				<button class="add" id="mainPieAdd" onclick="piePush();">Add+</button>
+				<input type="text" id="dimBmain" placeholder="Dimension B" value="60">
 				<input type="text" id="mainPie_pitch" placeholder="Pie Pitch" value="8">	
 				<button id="calc">Calculate</button>
 		</div>
 		<div class="inner" id="mainList">
-			<button class="btnLst" id="gableDorm">Gable Dormer</button><br>
+			<ul>
+				<li class="mainList" id="gableDorm">Gable Dormer</li>
+				<li class="mainList" id="shedDorm">Shed Dormer</li>
+				<li class="mainList" id="hipDorm">Hipped Dormer</li>
+				<li class="mainList" id="gableCross">Gable Cross</li>
+				<li class="mainList" id="hipCross">Hipped Cross</li>
+				<li class="mainList" id="gableInter">Gable Intersecting</li> 
+				<li class="mainList" id="hipInter">Hipped Intersecting</li>
+			</ul>
+<!--			<button class="btnLst" id="gableDorm">Gable Dormer</button><br>
 			<button class="btnLst" id="shedDorm">Shed Dormer</button><br>
 			<button class="btnLst" id="hipDorm">Hipped Dormer</button><br>
 			<button class="btnLst" id="gableCross">Gable Cross</button><br>
 			<button class="btnLst" id="hipCross">Hipped Cross</button><br>
 			<button class="btnLst" id="gableInter">Gable Intersecting</button><br>
-			<button class="btnLst" id="hipInter">Hipped Intersecting</button><br>
+			<button class="btnLst" id="hipInter">Hipped Intersecting</button><br>-->
 		</div>
 		<div class="inner" id="dormInput">
 		</div>
