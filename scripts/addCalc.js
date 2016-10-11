@@ -5,6 +5,15 @@ var negId = 0;
 		negId = dynId - 1;
 		console.log(dynId);
 	}
+var addArr = [];
+function addFunc() {
+	addArr.push("mainAdd");
+	console.log(addArr);
+}
+function pieFunc() {
+	addArr.push("pieAdd");
+	console.log(addArr);
+}
 function mainAdd() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
@@ -19,18 +28,30 @@ function mainAdd() {
 		subInput.className = "inner";
 		subInput.id = "subInput" + dynId;
 		dormInput.appendChild(subInput);
-		var dormNav = document.createElement("UL");
+/*		var dormNav = document.createElement("UL");
 		dormNav.className = "dormNav";
 		subInput.appendChild(dormNav);
 			var gableNav = document.createElement("LI");
 			gableNav.className = "gableNav";
 			gableNav.innerHTML = "Gable";
 			dormNav.appendChild(gableNav);
+			var gableNavArr = document.getElementsByClassName("gableNav");
+			for (var i = 0; i < gableNav.length; i++) {
+				gableNav[i].onclick = function gableNav() {
+					document.getElementsByClassName("dormPie_pitch").style.display = "none";
+				}
+			}
 			var hipNav = document.createElement("LI");
 			hipNav.className = "hipNav";
 			hipNav.innerHTML = "Hipped";
 			dormNav.appendChild(hipNav);
-		var dimAdorm = document.createElement("input");
+			var hipNavArr = document.getElementsByClassName("hipNav");
+			for (var i = 0; i < hipNavArr.length; i++) {
+				hipNavArr[i].onclick = function hipNav() {
+					document.getElementsByClassName("dormPie_pitch").style.display = "block";
+				}
+			}
+*/		var dimAdorm = document.createElement("input");
 		dimAdorm.className = "dimAdorm";
 		dimAdorm.placeholder = "Dimension A";
 		dimAdorm.value = 10;
@@ -66,19 +87,23 @@ function mainAdd() {
 			document.getElementById("mainInput").style.display = "block";
 			}
 		}
-			var gableNavArr = document.getElementsByClassName("gableNav");
-			for (var i = 0; i < gableNav.length; i++) {
-				gableNav[i].onclick = function gableNav() {
-					document.getElementsByClassName("dormPie_pitch").style.display = "none";
-				}
-			}
-			var hipNavArr = document.getElementsByClassName("hipNav");
-			for (var i = 0; i < hipNavArr.length; i++) {
-				hipNavArr[i].onclick = function hipNav() {
-					document.getElementsByClassName("dormPie_pitch").style.display = "block";
-				}
-			}
 	}
+	function mainPush() {
+		if (addArr[addArr.length-1] == "mainAdd") {
+			document.getElementsByClassName("dormPie_pitch").style.display = "none";
+		}
+		else if (addArr[addArr.length-1] == "pieAdd") {
+			document.getElementsByClassName("dormPie_pitch").style.display = "block";
+		}
+	}
+document.getElementById("mainAdd").addEventListener("click", idGen);
+document.getElementById("mainAdd").addEventListener("click", mainAdd);
+document.getElementById("mainAdd").addEventListener("click", addFunc);
+document.getElementById("mainPieAdd").addEventListener("click", idGen);
+document.getElementById("mainPieAdd").addEventListener("click", mainAdd);
+document.getElementById("mainPieAdd").addEventListener("click", pieFunc);
+document.getElementById("gableDorm").addEventListener("click", addDormer);
+document.getElementById("gableDorm").addEventListener("click", mainPush);
 
 
 document.getElementById("calc").onclick = function calc() {
