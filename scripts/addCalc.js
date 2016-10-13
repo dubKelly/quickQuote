@@ -149,7 +149,12 @@ document.getElementById("calc").onclick = function calc() {
 		}
 
 		var mainDormPie_slope = (+mainDormPie_pitchArr[i].value / 12) || 0;
-		var mainDormPie_peak = mainDorm_rise / mainDormPie_slope;
+		if (mainDormPie_slope === 0) {
+			var mainDormPie_peak = 0;
+		}
+		else {
+		mainDormPie_peak = mainDorm_rise / mainDormPie_slope;
+		}
 		var mainDormPie_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDormPie_peak, 2));
 		var mainDormPie_hip = Math.sqrt(Math.pow(mainDormPie_hyp, 2) + Math.pow(mainDorm_run, 2));
 		var mainDormPie_surA = mainDorm_run * mainDormPie_hyp;
@@ -175,7 +180,7 @@ document.getElementById("calc").onclick = function calc() {
 	var totalValley = mainDorm_totalValley / 8;
 
 	// *test* 
-	console.log(mainDorm_run);
+	console.log(mainDormPie_slope);
 
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
