@@ -53,6 +53,14 @@ function add() {
 	dormPie_pitch.id = "dormPie_pitch" + dynId;
 	dormPie_pitch.placeholder = "Pie Pitch";
 	subInput.appendChild(dormPie_pitch);
+	var rtn = document.createElement("input");
+	rtn.type = "checkbox";
+	rtn.className = "rtn";
+	subInput.appendChild(rtn);
+	var rtnLabel = document.createElement("label");
+	rtnLabel.className = "rtnLabel";
+	rtnLabel.innerHTML = "Add Return";
+	subInput.appendChild(rtnLabel);
 	var done = document.createElement("button");
 	done.className = "done";
 	done.innerHTML = "Done";
@@ -160,6 +168,17 @@ document.getElementById("calc").onclick = function calc() {
 		var mainDormPie_surA = mainDorm_run * mainDormPie_hyp;
 		var mainDormPieCvr_surA = mainDormPie_peak * mainDorm_hyp;
 
+		var rtnArr = document.getElementsByClassName("rtn");
+		var dubGRtnArr = document.getElementsByClassName("dubGRtn");
+		if (rtnArr[rtnArr.length - 1].checked === true && dubGRtnArr[dubGRtnArr.length - 1] === undefined) {
+			var dormRtn = mainDorm_run * 2;
+		}
+		else {
+			dormRtn = 0;
+		}
+
+
+
 		mainDorm_totalCap += 
 		mainDorm_peak 
 		+ mainDormOvr_peak 
@@ -180,7 +199,8 @@ document.getElementById("calc").onclick = function calc() {
 	var totalValley = mainDorm_totalValley / 8;
 
 	// *test* 
-	console.log(mainDormPie_slope);
+	console.log(dormRtn);
+	console.log(dubGRtnArr[dubGRtnArr.length - 1]);
 
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
