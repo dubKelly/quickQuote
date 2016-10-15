@@ -39,6 +39,9 @@ html, body {
 		width: 65%;
 		margin: 5% 5% 10% 5%;
 	}
+	.inner li {
+		display: inline-block;
+	}
 	.add {
 		float: left;
 		width: 25%;
@@ -91,5 +94,8 @@ input {
 #total {
 }
 #subInput0 {
+	display: none;
+}
+#hipInput {
 	display: none;
 }

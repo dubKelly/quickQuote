@@ -38,32 +38,65 @@ function add() {
 	subInput.className = "inner";
 	subInput.id = "subInput" + dynId;
 	dormInput.appendChild(subInput);
+	var interNavBar = document.getElementById("interNavBar");
+	subInput.appendChild(interNavBar);
+	var interNav = document.createElement("ul");
+	interNav.className = "interNav";
+	interNavBar.appendChild(interNav);
+	var gableNav = document.createElement("li");
+	gableNav.className = "gableNav";
+	gableNav.innerHTML = "Gable";
+	interNav.appendChild(gableNav);
+	var gableNavArr = document.getElementsByClassName("gableNav");
+	for (var i = 0; i < gableNavArr.length; i++) {
+		gableNavArr[i].onclick = function gable() {
+			document.getElementById("hipInput").style.display = "none";
+		}
+	}
+	var hipNav = document.createElement("li");
+	hipNav.className = "hipNav";
+	hipNav.innerHTML = "Hipped";
+	interNav.appendChild(hipNav);
+	var hipNavArr = document.getElementsByClassName("hipNav");
+	for (var i = 0; i < hipNavArr.length; i++) {
+		hipNavArr[i].onclick = function hip() {
+			document.getElementById("hipInput").style.display = "block";
+		}
+	}
+	var shedNav = document.createElement("li");
+	shedNav.className = "shedNav";
+	shedNav.innerHTML = "Shed";
+	interNav.appendChild(shedNav);
+	var gableInput = document.getElementById("gableInput");
+	subInput.appendChild(gableInput);
 	var dimAdorm = document.createElement("input");
 	dimAdorm.className = "dimAdorm";
 	dimAdorm.placeholder = "Dimension A";
 	dimAdorm.value = 10;
-	subInput.appendChild(dimAdorm);
+	gableInput.appendChild(dimAdorm);
 	var dimBdorm = document.createElement("input");
 	dimBdorm.className = "dimBdorm";
 	dimBdorm.placeholder = "Dimension B";
 	dimBdorm.value = 10;
-	subInput.appendChild(dimBdorm);
+	gableInput.appendChild(dimBdorm);
 	var dorm_pitch = document.createElement("input");
 	dorm_pitch.className = "dorm_pitch";
 	dorm_pitch.placeholder = "Pitch";
 	dorm_pitch.value = 10;
-	subInput.appendChild(dorm_pitch);
+	gableInput.appendChild(dorm_pitch);
 	var dimCdorm = document.createElement("input");
 	dimCdorm.className = "dimCdorm";
 	dimCdorm.placeholder = "Dimension C";
 	dimCdorm.value = 6;
-	subInput.appendChild(dimCdorm);
+	gableInput.appendChild(dimCdorm);
+	var hipInput = document.getElementById("hipInput");
+	subInput.appendChild(hipInput);
 	var dormPie_pitch = document.createElement("input");
 	dormPie_pitch.className = "dormPie_pitch";
 	dormPie_pitch.id = "dormPie_pitch" + dynId;
 	dormPie_pitch.placeholder = "Pie Pitch";
-	subInput.appendChild(dormPie_pitch);
-	var rtn = document.createElement("input");
+	hipInput.appendChild(dormPie_pitch);
+/*	var rtn = document.createElement("input");
 	rtn.type = "checkbox";
 	rtn.className = "rtn";
 	subInput.appendChild(rtn);
@@ -71,10 +104,13 @@ function add() {
 	rtnLabel.className = "rtnLabel";
 	rtnLabel.innerHTML = "Add Return";
 	subInput.appendChild(rtnLabel);
+*/	
+	var doneBtn = document.getElementById("doneBtn");
+	subInput.appendChild(doneBtn);
 	var done = document.createElement("button");
 	done.className = "done";
 	done.innerHTML = "Done";
-	subInput.appendChild(done);
+	doneBtn.appendChild(done);
 	var doneArr = document.getElementsByClassName("done");
 	for (var i = 0; i < doneArr.length; i++) {
 		doneArr[i].onclick = function done() {
@@ -83,6 +119,7 @@ function add() {
 		}
 	}
 }
+/*
 function dormDisplay() {
 	if (addArr[addArr.length - 1] === "mainAdd") {
 		document.getElementById("dormPie_pitch" + dynId).style.display = "none";
@@ -91,7 +128,7 @@ function dormDisplay() {
 	//	console.log(addArr[addArr.length-1]);
 		document.getElementById("dormPie_pitch" + dynId).style.display = "block";
 	}
-}
+}*/
 document.getElementById("mainAdd").addEventListener("click", idGen);
 document.getElementById("mainAdd").addEventListener("click", add);
 document.getElementById("mainAdd").addEventListener("click", mainPush);
@@ -99,7 +136,7 @@ document.getElementById("mainPieAdd").addEventListener("click", idGen);
 document.getElementById("mainPieAdd").addEventListener("click", add);
 document.getElementById("mainPieAdd").addEventListener("click", piePush);
 document.getElementById("gableDorm").addEventListener("click", addDorm);
-document.getElementById("gableDorm").addEventListener("click", dormDisplay);
+//document.getElementById("gableDorm").addEventListener("click", dormDisplay);
 
 
 document.getElementById("calc").onclick = function calc() {
@@ -210,13 +247,13 @@ document.getElementById("calc").onclick = function calc() {
 
 		var rtnArr = document.getElementsByClassName("rtn");
 		var dubGRtnArr = document.getElementsByClassName("dubGRtn");
-		if (rtnArr[rtnArr.length - 1].checked === true && dubGRtnArr[dubGRtnArr.length - 1] === undefined) {
+/*		if (rtnArr[rtnArr.length - 1].checked === true && dubGRtnArr[dubGRtnArr.length - 1] === undefined) {
 			var dormRtn = mainDorm_run * 2;
 		}
 		else {
 			dormRtn = 0;
 		}
-
+*/
 
 
 		mainDorm_totalCap += 
@@ -226,8 +263,8 @@ document.getElementById("calc").onclick = function calc() {
 		+ mainDormPie_hip;
 		mainDorm_totalSurA += 
 		mainDorm_surA 
-		+ mainDormOvr_surA 
-		- mainDormOvrH_surA 
+//		+ mainDormOvr_surA 
+//		- mainDormOvrH_surA 
 		- mainDormCvr_surA
 		+ mainDormPie_surA 
 		- mainDormPieCvr_surA;
