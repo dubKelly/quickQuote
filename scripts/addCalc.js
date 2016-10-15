@@ -3,7 +3,7 @@ var negId = 0;
 function idGen() {
 	dynId++;
 	negId = dynId - 1;
-	console.log(dynId);
+	//console.log(dynId);
 }
 var addArr = [];
 function mainPush() {
@@ -13,6 +13,16 @@ function mainPush() {
 function piePush() {
 	addArr.push("pieAdd");
 	console.log(addArr);
+}
+var lvnArr = [];
+function zeroPush() {
+	lvnArr.push("zero");
+}
+function plusPush() {
+	lvnArr.push("plus");
+}
+function negPush() {
+	lvnArr.push("neg");
 }
 
 function addDorm() {
@@ -78,7 +88,7 @@ function dormDisplay() {
 		document.getElementById("dormPie_pitch" + dynId).style.display = "none";
 	}
 	else if (addArr[addArr.length - 1] === "pieAdd") {
-		console.log(addArr[addArr.length-1]);
+	//	console.log(addArr[addArr.length-1]);
 		document.getElementById("dormPie_pitch" + dynId).style.display = "block";
 	}
 }
@@ -115,24 +125,26 @@ document.getElementById("calc").onclick = function calc() {
 	// mainDormers
 
 		var mainDorm_runArr = document.getElementsByClassName("dimAdorm");
+		var mainDormOvr_peakArr = document.getElementsByClassName("dimBdorm"); 
 		var mainDorm_pitchArr = document.getElementsByClassName("dorm_pitch");
-		var mainDormOvr_runArr = document.getElementsByClassName("dimBdorm");
-		var mainDormOvr_peakArr = document.getElementsByClassName("dimCdorm"); 
+		var mainDormOvr_lvnArr = document.getElementsByClassName("dimCdorm");
+		var mainDormOvr_runArr = document.getElementsByClassName("dimDdorm");
 		var mainDormPie_pitchArr = document.getElementsByClassName("dormPie_pitch");
 		var mainDorm_totalSurA = 0;
 		var mainDorm_totalCap = 0;
 		var mainDorm_totalValley = 0;
 	
 	for (var i = 0; i < mainDorm_runArr.length; i++) {
+		console.log(addArr[i]);
 
 		var mainDorm_run = +mainDorm_runArr[i].value / 2;
 		var mainDorm_slope = +mainDorm_pitchArr[i].value / 12;
 		var mainDorm_rise = mainDorm_run * mainDorm_slope;
 		var mainDorm_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_run, 2));
-		if (addArr[addArr.length - 1] === "mainAdd") {
+		if (addArr[i] === "mainAdd") {
 			var mainDorm_peak = mainDorm_rise / main_slope;
 		}
-		else if (addArr[addArr.length - 1] === "pieAdd") {
+		else if (addArr[i] === "pieAdd") {
 			mainDorm_peak = mainDorm_rise / mainPie_slope;
 		}
 		var mainDorm_valley = (Math.sqrt(Math.pow(mainDorm_peak, 2) + Math.pow(mainDorm_hyp, 2))) * 2;
@@ -141,8 +153,36 @@ document.getElementById("calc").onclick = function calc() {
 		var mainDormCvr_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_peak));
 		var mainDormCvr_surA = mainDorm_run * mainDorm_hyp;
 
-		var mainDormOvr_run = +mainDormOvr_runArr[i].value / 2;
-		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
+		var mainDormOvr_peak = +mainDormOvr_peakArr[i].value;
+		var mainDormOvr_lvn = +mainDormOvr_lvnArr[i].value;
+		if (lvnArr[i] === "zero") {
+			var mainDormOvr_surA = (mainDormOvr_peak * mainDorm_hyp) * 2;
+			var mainDormOvrH_surA = 0;
+		} 
+		else if (lvnArr[i] === "plus") {
+			mainDormOvr_surA = (mainDormOvr_peak * mainDorm_hyp) * 2;
+			if (addArr[i] === "mainAdd") {
+				var mainDormOvrH_rise = mainDormOvr_peak * main_slope;
+			}
+			else if (addArr[i] === "pieAdd") {
+				mainDormOvrH_rise = mainDormOvr_peak * mainPie_slope;
+			}
+			var mainDormOvrH_hyp = Math.sqrt(Math.pow(mainDormOvrH_rise, 2) + Math.pow(mainDormOvr_peak, 2));
+			if (mainDormOvr_lvn >= mainDormOvrH_hyp) {
+				var mainDormOvrH_surA = (mainDormOvrH_hyp * (mainDorm_run * 2)) - ((mainDormOvrH_hyp * 2) + (mainDorm_run * 2));
+			}
+			else if (mainDormOvr_lvn < mainDormOvrH_hyp) {
+				mainDormOvrH_surA = (mainDormOvr_lvn * (mainDorm_run * 2)) - (mainDormOvr_lvn * 2);
+			}
+		}
+		else if (lvnArr[i] === "neg") {
+			var mainDormOvr_run = +mainDormOvr_runArr[i].value / 2;
+			var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
+			var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
+			mainDormOvr_surA = ((mainDormOvr_peak * mainDormOvr_hyp) * 2) + (mainDormOvr_lvn * 2);
+			mainDormOvrH_surA = 0;
+		}
+/*		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
 		var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
 		var mainDormOvr_peak = +mainDormOvr_peakArr[i].value || 0;
 		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
@@ -155,7 +195,7 @@ document.getElementById("calc").onclick = function calc() {
 		else {
 			mainDormOvrH_surA = (mainDormOvrH_hyp + mainDorm_run) * 2;
 		}
-
+*/
 		var mainDormPie_slope = (+mainDormPie_pitchArr[i].value / 12) || 0;
 		if (mainDormPie_slope === 0) {
 			var mainDormPie_peak = 0;
@@ -187,8 +227,8 @@ document.getElementById("calc").onclick = function calc() {
 		mainDorm_totalSurA += 
 		mainDorm_surA 
 		+ mainDormOvr_surA 
-		+ mainDormOvrH_surA 
-		- mainDormCvr_surA 
+		- mainDormOvrH_surA 
+		- mainDormCvr_surA
 		+ mainDormPie_surA 
 		- mainDormPieCvr_surA;
 		mainDorm_totalValley += 
@@ -198,9 +238,7 @@ document.getElementById("calc").onclick = function calc() {
 	var totalCap = (main_totalCap + mainDorm_totalCap) / 29.5;
 	var totalValley = mainDorm_totalValley / 8;
 
-	// *test* 
-	console.log(dormRtn);
-	console.log(dubGRtnArr[dubGRtnArr.length - 1]);
+	// *test* console.log(dormRtn);console.log(dubGRtnArr[dubGRtnArr.length - 1]);
 
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
