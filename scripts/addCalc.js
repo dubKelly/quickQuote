@@ -14,16 +14,12 @@ function piePush() {
 	addArr.push("pieAdd");
 	console.log(addArr);
 }
-var lvnArr = [];
-function zeroPush() {
-	lvnArr.push("zero");
-}
-function plusPush() {
-	lvnArr.push("plus");
-}
-function negPush() {
-	lvnArr.push("neg");
-}
+var x = 0;
+var dubGToggleArr = ["break"];
+var y = 0;
+var dubGRtnToggleArr = [0];
+var z = 0;
+var rtnToggleArr = [0];
 
 function addDorm() {
 	document.getElementById("mainList").style.display = "none";
@@ -38,11 +34,9 @@ function add() {
 	subInput.className = "inner";
 	subInput.id = "subInput" + dynId;
 	dormInput.appendChild(subInput);
-	var interNavBar = document.getElementById("interNavBar");
-	subInput.appendChild(interNavBar);
 	var interNav = document.createElement("ul");
 	interNav.className = "interNav";
-	interNavBar.appendChild(interNav);
+	subInput.appendChild(interNav);
 	var gableNav = document.createElement("li");
 	gableNav.className = "gableNav";
 	gableNav.innerHTML = "Gable";
@@ -50,7 +44,7 @@ function add() {
 	var gableNavArr = document.getElementsByClassName("gableNav");
 	for (var i = 0; i < gableNavArr.length; i++) {
 		gableNavArr[i].onclick = function gable() {
-			document.getElementById("hipInput").style.display = "none";
+			subInput.removeChild(dormPie_pitch);
 		}
 	}
 	var hipNav = document.createElement("li");
@@ -60,62 +54,119 @@ function add() {
 	var hipNavArr = document.getElementsByClassName("hipNav");
 	for (var i = 0; i < hipNavArr.length; i++) {
 		hipNavArr[i].onclick = function hip() {
-			document.getElementById("hipInput").style.display = "block";
+			subInput.appendChild(dormPie_pitch);
 		}
 	}
 	var shedNav = document.createElement("li");
 	shedNav.className = "shedNav";
 	shedNav.innerHTML = "Shed";
 	interNav.appendChild(shedNav);
-	var gableInput = document.getElementById("gableInput");
-	subInput.appendChild(gableInput);
 	var dimAdorm = document.createElement("input");
 	dimAdorm.className = "dimAdorm";
 	dimAdorm.placeholder = "Dimension A";
 	dimAdorm.value = 10;
-	gableInput.appendChild(dimAdorm);
+	subInput.appendChild(dimAdorm);
 	var dimBdorm = document.createElement("input");
 	dimBdorm.className = "dimBdorm";
 	dimBdorm.placeholder = "Dimension B";
 	dimBdorm.value = 10;
-	gableInput.appendChild(dimBdorm);
+	subInput.appendChild(dimBdorm);
 	var dorm_pitch = document.createElement("input");
 	dorm_pitch.className = "dorm_pitch";
 	dorm_pitch.placeholder = "Pitch";
 	dorm_pitch.value = 10;
-	gableInput.appendChild(dorm_pitch);
+	subInput.appendChild(dorm_pitch);
 	var dimCdorm = document.createElement("input");
 	dimCdorm.className = "dimCdorm";
 	dimCdorm.placeholder = "Dimension C";
 	dimCdorm.value = 6;
-	gableInput.appendChild(dimCdorm);
-	var hipInput = document.getElementById("hipInput");
-	subInput.appendChild(hipInput);
+	subInput.appendChild(dimCdorm);
+	var dubG = document.createElement("p");
+	dubG.className = "dubG";
+	dubG.innerHTML = "dubG";
+	subInput.appendChild(dubG);
+	var dubGArr = document.getElementsByClassName("dubG");
+	for (var i = 0; i < dubGArr.length; i++) {
+		dubGArr[i].onclick = function dubGToggle() {
+			if (dubGToggleArr[dubGToggleArr.length - 1] === "break") {
+				x = 1 - x;
+				dubGToggleArr.push(x);
+				dubG.style.color = "green";
+				subInput.appendChild(dubGRtn);
+			}
+			else if (x === 1) {
+				x = 1 - x;
+				dubGToggleArr.pop();
+				dubGToggleArr.push(x);
+				dubG.style.color = "white";
+				subInput.removeChild(dubGRtn);
+			}
+			else if (x === 0) {
+				x = 1 - x;
+				dubGToggleArr.pop();
+				dubGToggleArr.push(x);
+				dubG.style.color = "green";
+				subInput.appendChild(dubGRtn);
+			}
+		}
+	}
+	var dubGRtn = document.createElement("p");
+	dubGRtn.className = "dubGRtn";
+	dubGRtn.innerHTML = "dubGRtn";
+	dormInput.appendChild(dubGRtn);
+	var dubGRtnArr = document.getElementsByClassName("dubGRtn");
+	for (var i = 0; i < dubGRtnArr.length; i++) {
+		dubGRtnArr[i].onclick = function dubGRtnToggle() {
+			console.log(y);
+			if (y === 0) {
+				y = 1 - y;
+				dubGRtnToggleArr.pop();
+				dubGRtnToggleArr.push(y);
+				dubGRtn.style.color = "green";
+			}
+			else if (y === 1) {
+				y  = 1 - y;
+				dubGRtnToggleArr.pop();
+				dubGRtnToggleArr.push(y);
+				dubGRtn.style.color = "white";
+			}
+		}
+	}
+	var rtn = document.createElement("p");
+	rtn.className = "rtn";
+	rtn.innerHTML = "rtn";
+	subInput.appendChild(rtn);
+	var rtnArr = document.getElementsByClassName("rtn");
+	for (var i = 0; i < rtnArr.length; i++) {
+		rtnArr[i].onclick = function rtnToggle() {
+			if (z === 0) {
+				z = 1 - z;
+				rtnToggleArr.pop();
+				rtnToggleArr.push(z);
+				rtn.style.color = "green";
+			}
+			else if (z === 1) {
+				z  = 1 - z;
+				rtnToggleArr.pop();
+				rtnToggleArr.push(z);
+				rtn.style.color = "white";
+			}
+		}
+	}
 	var dormPie_pitch = document.createElement("input");
 	dormPie_pitch.className = "dormPie_pitch";
 	dormPie_pitch.id = "dormPie_pitch" + dynId;
 	dormPie_pitch.placeholder = "Pie Pitch";
-	hipInput.appendChild(dormPie_pitch);
-/*	var rtn = document.createElement("input");
-	rtn.type = "checkbox";
-	rtn.className = "rtn";
-	subInput.appendChild(rtn);
-	var rtnLabel = document.createElement("label");
-	rtnLabel.className = "rtnLabel";
-	rtnLabel.innerHTML = "Add Return";
-	subInput.appendChild(rtnLabel);
-*/	
-	var doneBtn = document.getElementById("doneBtn");
-	subInput.appendChild(doneBtn);
 	var done = document.createElement("button");
 	done.className = "done";
 	done.innerHTML = "Done";
-	doneBtn.appendChild(done);
+	subInput.appendChild(done);
 	var doneArr = document.getElementsByClassName("done");
 	for (var i = 0; i < doneArr.length; i++) {
 		doneArr[i].onclick = function done() {
 		document.getElementById("dormInput").style.display = "none";
 		document.getElementById("mainInput").style.display = "block";
+		dubGToggleArr.push("break");
 		}
 	}
 }

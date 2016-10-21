@@ -32,6 +32,7 @@ html, body {
 	position: absolute;
 	top: 0;
 	left: 0;
+	background-color: #282828;
 }
 	.inner p {
 		text-align: left;
@@ -94,8 +95,5 @@ input {
 #total {
 }
 #subInput0 {
-	display: none;
-}
-#hipInput {
 	display: none;
 }
