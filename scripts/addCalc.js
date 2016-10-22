@@ -3,16 +3,13 @@ var negId = 0;
 function idGen() {
 	dynId++;
 	negId = dynId - 1;
-	//console.log(dynId);
 }
 var addArr = [];
 function mainPush() {
 	addArr.push("mainAdd");
-	console.log(addArr);
 }
 function piePush() {
 	addArr.push("pieAdd");
-	console.log(addArr);
 }
 var x = 0;
 var dubGToggleArr = ["break"];
@@ -21,19 +18,19 @@ var dubGRtnToggleArr = [0];
 var z = 0;
 var rtnToggleArr = [0];
 
-function addDorm() {
+function addInter() {
 	document.getElementById("mainList").style.display = "none";
 	document.getElementById("subInput" + negId).style.display = "none";
-	document.getElementById("dormInput").style.display = "block";
+	document.getElementById("interInput").style.display = "block";
 }
 function add() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
-	var dormInput = document.getElementById("dormInput");
+	var interInput = document.getElementById("interInput");
 	var subInput = document.createElement("div");
 	subInput.className = "inner";
 	subInput.id = "subInput" + dynId;
-	dormInput.appendChild(subInput);
+	interInput.appendChild(subInput);
 	var interNav = document.createElement("ul");
 	interNav.className = "interNav";
 	subInput.appendChild(interNav);
@@ -44,7 +41,7 @@ function add() {
 	var gableNavArr = document.getElementsByClassName("gableNav");
 	for (var i = 0; i < gableNavArr.length; i++) {
 		gableNavArr[i].onclick = function gable() {
-			subInput.removeChild(dormPie_pitch);
+			subInput.removeChild(interPie_pitch);
 		}
 	}
 	var hipNav = document.createElement("li");
@@ -54,33 +51,33 @@ function add() {
 	var hipNavArr = document.getElementsByClassName("hipNav");
 	for (var i = 0; i < hipNavArr.length; i++) {
 		hipNavArr[i].onclick = function hip() {
-			subInput.appendChild(dormPie_pitch);
+			subInput.appendChild(interPie_pitch);
 		}
 	}
 	var shedNav = document.createElement("li");
 	shedNav.className = "shedNav";
 	shedNav.innerHTML = "Shed";
 	interNav.appendChild(shedNav);
-	var dimAdorm = document.createElement("input");
-	dimAdorm.className = "dimAdorm";
-	dimAdorm.placeholder = "Dimension A";
-	dimAdorm.value = 10;
-	subInput.appendChild(dimAdorm);
-	var dimBdorm = document.createElement("input");
-	dimBdorm.className = "dimBdorm";
-	dimBdorm.placeholder = "Dimension B";
-	dimBdorm.value = 10;
-	subInput.appendChild(dimBdorm);
-	var dorm_pitch = document.createElement("input");
-	dorm_pitch.className = "dorm_pitch";
-	dorm_pitch.placeholder = "Pitch";
-	dorm_pitch.value = 10;
-	subInput.appendChild(dorm_pitch);
-	var dimCdorm = document.createElement("input");
-	dimCdorm.className = "dimCdorm";
-	dimCdorm.placeholder = "Dimension C";
-	dimCdorm.value = 6;
-	subInput.appendChild(dimCdorm);
+	var dimAinter = document.createElement("input");
+	dimAinter.className = "dimAinter";
+	dimAinter.placeholder = "Dimension A";
+	dimAinter.value = 10;
+	subInput.appendChild(dimAinter);
+	var dimBinter = document.createElement("input");
+	dimBinter.className = "dimBinter";
+	dimBinter.placeholder = "Dimension B";
+	dimBinter.value = 10;
+	subInput.appendChild(dimBinter);
+	var inter_pitch = document.createElement("input");
+	inter_pitch.className = "inter_pitch";
+	inter_pitch.placeholder = "Pitch";
+	inter_pitch.value = 10;
+	subInput.appendChild(inter_pitch);
+	var dimCinter = document.createElement("input");
+	dimCinter.className = "dimCinter";
+	dimCinter.placeholder = "Dimension C";
+	dimCinter.value = 6;
+	subInput.appendChild(dimCinter);
 	var dubG = document.createElement("p");
 	dubG.className = "dubG";
 	dubG.innerHTML = "dubG";
@@ -93,6 +90,8 @@ function add() {
 				dubGToggleArr.push(x);
 				dubG.style.color = "green";
 				subInput.appendChild(dubGRtn);
+				subInput.appendChild(dimEinter);
+				subInput.appendChild(dimFinter);
 			}
 			else if (x === 1) {
 				x = 1 - x;
@@ -100,6 +99,8 @@ function add() {
 				dubGToggleArr.push(x);
 				dubG.style.color = "white";
 				subInput.removeChild(dubGRtn);
+				subInput.removeChild(dimEinter);
+				subInput.removeChild(dimFinter);
 			}
 			else if (x === 0) {
 				x = 1 - x;
@@ -107,17 +108,18 @@ function add() {
 				dubGToggleArr.push(x);
 				dubG.style.color = "green";
 				subInput.appendChild(dubGRtn);
+				subInput.appendChild(dimEinter);
+				subInput.appendChild(dimFinter);
 			}
 		}
 	}
 	var dubGRtn = document.createElement("p");
 	dubGRtn.className = "dubGRtn";
 	dubGRtn.innerHTML = "dubGRtn";
-	dormInput.appendChild(dubGRtn);
+	interInput.appendChild(dubGRtn);
 	var dubGRtnArr = document.getElementsByClassName("dubGRtn");
 	for (var i = 0; i < dubGRtnArr.length; i++) {
 		dubGRtnArr[i].onclick = function dubGRtnToggle() {
-			console.log(y);
 			if (y === 0) {
 				y = 1 - y;
 				dubGRtnToggleArr.pop();
@@ -153,10 +155,16 @@ function add() {
 			}
 		}
 	}
-	var dormPie_pitch = document.createElement("input");
-	dormPie_pitch.className = "dormPie_pitch";
-	dormPie_pitch.id = "dormPie_pitch" + dynId;
-	dormPie_pitch.placeholder = "Pie Pitch";
+	var dimEinter = document.createElement("input");
+	dimEinter.className = "dimEinter";
+	dimEinter.placeholder = "Dimension E";
+	var dimFinter = document.createElement("input");
+	dimFinter.className = "dimFinter";
+	dimFinter.placeholder = "Dimension F";
+	var interPie_pitch = document.createElement("input");
+	interPie_pitch.className = "interPie_pitch";
+	interPie_pitch.id = "interPie_pitch" + dynId;
+	interPie_pitch.placeholder = "Pie Pitch";
 	var done = document.createElement("button");
 	done.className = "done";
 	done.innerHTML = "Done";
@@ -164,31 +172,21 @@ function add() {
 	var doneArr = document.getElementsByClassName("done");
 	for (var i = 0; i < doneArr.length; i++) {
 		doneArr[i].onclick = function done() {
-		document.getElementById("dormInput").style.display = "none";
+		document.getElementById("interInput").style.display = "none";
 		document.getElementById("mainInput").style.display = "block";
 		dubGToggleArr.push("break");
+		x = y = z = 0;
 		}
 	}
 }
-/*
-function dormDisplay() {
-	if (addArr[addArr.length - 1] === "mainAdd") {
-		document.getElementById("dormPie_pitch" + dynId).style.display = "none";
-	}
-	else if (addArr[addArr.length - 1] === "pieAdd") {
-	//	console.log(addArr[addArr.length-1]);
-		document.getElementById("dormPie_pitch" + dynId).style.display = "block";
-	}
-}*/
+
 document.getElementById("mainAdd").addEventListener("click", idGen);
 document.getElementById("mainAdd").addEventListener("click", add);
 document.getElementById("mainAdd").addEventListener("click", mainPush);
 document.getElementById("mainPieAdd").addEventListener("click", idGen);
 document.getElementById("mainPieAdd").addEventListener("click", add);
 document.getElementById("mainPieAdd").addEventListener("click", piePush);
-document.getElementById("gableDorm").addEventListener("click", addDorm);
-//document.getElementById("gableDorm").addEventListener("click", dormDisplay);
-
+document.getElementById("gableInter").addEventListener("click", addInter);
 
 document.getElementById("calc").onclick = function calc() {
 
@@ -210,123 +208,166 @@ document.getElementById("calc").onclick = function calc() {
 	var main_totalSurA = (main_surA + mainPie_surA - mainPieCvr_surA);
 	var main_totalCap = (+document.getElementById("dimBmain").value - (mainPie_peak * 2) + mainPie_hip);
 
-	// mainDormers
+	// mainInter
 
-		var mainDorm_runArr = document.getElementsByClassName("dimAdorm");
-		var mainDormOvr_peakArr = document.getElementsByClassName("dimBdorm"); 
-		var mainDorm_pitchArr = document.getElementsByClassName("dorm_pitch");
-		var mainDormOvr_lvnArr = document.getElementsByClassName("dimCdorm");
-		var mainDormOvr_runArr = document.getElementsByClassName("dimDdorm");
-		var mainDormPie_pitchArr = document.getElementsByClassName("dormPie_pitch");
-		var mainDorm_totalSurA = 0;
-		var mainDorm_totalCap = 0;
-		var mainDorm_totalValley = 0;
+		var mainInter_runArr = document.getElementsByClassName("dimAinter");
+		var mainInterOvr_peakArr = document.getElementsByClassName("dimBinter"); 
+		var mainInter_pitchArr = document.getElementsByClassName("inter_pitch");
+		var mainInterOvr_lvnArr = document.getElementsByClassName("dimCinter");
+		var mainInterOvr_runArr = document.getElementsByClassName("dimDinter");
+		var mainInterDubG_runArr = document.getElementsByClassName("dimEinter");
+		var mainInterDubG_peakArr = document.getElementsByClassName("dimFinter");
+		var mainInterPie_pitchArr = document.getElementsByClassName("interPie_pitch");
+		var mainInter_totalSurA = 0;
+		var mainInter_totalCap = 0;
+		var mainInter_totalValley = 0;
 	
-	for (var i = 0; i < mainDorm_runArr.length; i++) {
-		console.log(addArr[i]);
+	for (var i = 0; i < mainInter_runArr.length; i++) {
 
-		var mainDorm_run = +mainDorm_runArr[i].value / 2;
-		var mainDorm_slope = +mainDorm_pitchArr[i].value / 12;
-		var mainDorm_rise = mainDorm_run * mainDorm_slope;
-		var mainDorm_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_run, 2));
+		var mainInter_run = +mainInter_runArr[i].value / 2;
+		var mainInter_slope = +mainInter_pitchArr[i].value / 12;
+		var mainInter_rise = mainInter_run * mainInter_slope;
+		var mainInter_hyp = Math.sqrt(Math.pow(mainInter_rise, 2) + Math.pow(mainInter_run, 2));
 		if (addArr[i] === "mainAdd") {
-			var mainDorm_peak = mainDorm_rise / main_slope;
+			var mainInter_peak = mainInter_rise / main_slope;
 		}
 		else if (addArr[i] === "pieAdd") {
-			mainDorm_peak = mainDorm_rise / mainPie_slope;
+			mainInter_peak = mainInter_rise / mainPie_slope;
 		}
-		var mainDorm_valley = (Math.sqrt(Math.pow(mainDorm_peak, 2) + Math.pow(mainDorm_hyp, 2))) * 2;
-		var mainDorm_surA = mainDorm_peak * mainDorm_hyp;
+		var mainInter_valley = (Math.sqrt(Math.pow(mainInter_peak, 2) + Math.pow(mainInter_hyp, 2))) * 2;
+		var mainInter_surA = mainInter_peak * mainInter_hyp;
 
-		var mainDormCvr_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDorm_peak));
-		var mainDormCvr_surA = mainDorm_run * mainDorm_hyp;
+		var mainInterCvr_hyp = Math.sqrt(Math.pow(mainInter_rise, 2) + Math.pow(mainInter_peak));
+		var mainInterCvr_surA = mainInter_run * mainInter_hyp;
 
-		var mainDormOvr_peak = +mainDormOvr_peakArr[i].value;
-		var mainDormOvr_lvn = +mainDormOvr_lvnArr[i].value;
-		if (lvnArr[i] === "zero") {
-			var mainDormOvr_surA = (mainDormOvr_peak * mainDorm_hyp) * 2;
-			var mainDormOvrH_surA = 0;
+		var mainInterOvr_peak = +mainInterOvr_peakArr[i].value;
+		var mainInterOvr_lvn = +mainInterOvr_lvnArr[i].value;
+		if (mainInterOvr_lvn === 0) {
+			var mainInterOvr_surA = (mainInterOvr_peak * mainInter_hyp) * 2;
+			var mainInterOvrH_surA = 0;
 		} 
-		else if (lvnArr[i] === "plus") {
-			mainDormOvr_surA = (mainDormOvr_peak * mainDorm_hyp) * 2;
+		else if (mainInterOvr_lvn > 0) {
+			mainInterOvr_surA = (mainInterOvr_peak * mainInter_hyp) * 2;
 			if (addArr[i] === "mainAdd") {
-				var mainDormOvrH_rise = mainDormOvr_peak * main_slope;
+				var mainInterOvrH_rise = mainInterOvr_peak * main_slope;
 			}
 			else if (addArr[i] === "pieAdd") {
-				mainDormOvrH_rise = mainDormOvr_peak * mainPie_slope;
+				mainInterOvrH_rise = mainInterOvr_peak * mainPie_slope;
 			}
-			var mainDormOvrH_hyp = Math.sqrt(Math.pow(mainDormOvrH_rise, 2) + Math.pow(mainDormOvr_peak, 2));
-			if (mainDormOvr_lvn >= mainDormOvrH_hyp) {
-				var mainDormOvrH_surA = (mainDormOvrH_hyp * (mainDorm_run * 2)) - ((mainDormOvrH_hyp * 2) + (mainDorm_run * 2));
+			var mainInterOvrH_hyp = Math.sqrt(Math.pow(mainInterOvrH_rise, 2) + Math.pow(mainInterOvr_peak, 2));
+			if (mainInterOvr_lvn >= mainInterOvrH_hyp) {
+				var mainInterOvrH_surA = (mainInterOvrH_hyp * (mainInter_run * 2)) - ((mainInterOvrH_hyp * 2) + (mainInter_run * 2));
 			}
-			else if (mainDormOvr_lvn < mainDormOvrH_hyp) {
-				mainDormOvrH_surA = (mainDormOvr_lvn * (mainDorm_run * 2)) - (mainDormOvr_lvn * 2);
+			else if (mainInterOvr_lvn < mainInterOvrH_hyp) {
+				mainInterOvrH_surA = (mainInterOvr_lvn * (mainInter_run * 2)) - (mainInterOvr_lvn * 2);
 			}
 		}
-		else if (lvnArr[i] === "neg") {
-			var mainDormOvr_run = +mainDormOvr_runArr[i].value / 2;
-			var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
-			var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
-			mainDormOvr_surA = ((mainDormOvr_peak * mainDormOvr_hyp) * 2) + (mainDormOvr_lvn * 2);
-			mainDormOvrH_surA = 0;
+		else if (mainInterOvr_lvn < 0) {
+			var mainInterOvr_run = +mainInterOvr_runArr[i].value / 2;
+			var mainInterOvr_rise = mainInterOvr_run * mainInter_slope;
+			var mainInterOvr_hyp = Math.sqrt(Math.pow(mainInterOvr_rise, 2) + Math.pow(mainInterOvr_run, 2));
+			mainInterOvr_surA = ((mainInterOvr_peak * mainInterOvr_hyp) * 2) + (mainInterOvr_lvn * 2);
+			mainInterOvrH_surA = 0;
 		}
-/*		var mainDormOvr_rise = mainDormOvr_run * mainDorm_slope;
-		var mainDormOvr_hyp = Math.sqrt(Math.pow(mainDormOvr_rise, 2) + Math.pow(mainDormOvr_run, 2));
-		var mainDormOvr_peak = +mainDormOvr_peakArr[i].value || 0;
-		var mainDormOvr_surA = (mainDormOvr_peak * mainDormOvr_hyp) * 2;
 
-		var mainDormOvrH_rise = mainDormOvr_peak * main_slope;
-		var mainDormOvrH_hyp = Math.sqrt(Math.pow(mainDormOvrH_rise, 2) + Math.pow(mainDormOvr_peak, 2))
-		if (mainDormOvr_run > mainDorm_run || mainDormOvr_peak === 0) {
-			var mainDormOvrH_surA = 0;
+		if (mainInterPie_pitchArr[i] === undefined) {
+			var mainInterPie_slope = 0;
 		}
 		else {
-			mainDormOvrH_surA = (mainDormOvrH_hyp + mainDorm_run) * 2;
+			mainInterPie_slope = +mainInterPie_pitchArr[i].value / 12;
 		}
-*/
-		var mainDormPie_slope = (+mainDormPie_pitchArr[i].value / 12) || 0;
-		if (mainDormPie_slope === 0) {
-			var mainDormPie_peak = 0;
+		if (mainInterPie_slope === 0) {
+			var mainInterPie_peak = 0;
 		}
 		else {
-		mainDormPie_peak = mainDorm_rise / mainDormPie_slope;
+		mainInterPie_peak = mainInter_rise / mainInterPie_slope;
 		}
-		var mainDormPie_hyp = Math.sqrt(Math.pow(mainDorm_rise, 2) + Math.pow(mainDormPie_peak, 2));
-		var mainDormPie_hip = Math.sqrt(Math.pow(mainDormPie_hyp, 2) + Math.pow(mainDorm_run, 2));
-		var mainDormPie_surA = mainDorm_run * mainDormPie_hyp;
-		var mainDormPieCvr_surA = mainDormPie_peak * mainDorm_hyp;
+		var mainInterPie_hyp = Math.sqrt(Math.pow(mainInter_rise, 2) + Math.pow(mainInterPie_peak, 2));
+		var mainInterPie_hip = Math.sqrt(Math.pow(mainInterPie_hyp, 2) + Math.pow(mainInter_run, 2));
+		var mainInterPie_surA = mainInter_run * mainInterPie_hyp;
+		var mainInterPieCvr_surA = mainInterPie_peak * mainInter_hyp;
 
-		var rtnArr = document.getElementsByClassName("rtn");
-		var dubGRtnArr = document.getElementsByClassName("dubGRtn");
-/*		if (rtnArr[rtnArr.length - 1].checked === true && dubGRtnArr[dubGRtnArr.length - 1] === undefined) {
-			var dormRtn = mainDorm_run * 2;
+		if (mainInterDubG_runArr[i] === undefined) {
+			var mainInterDubG_run = 0;
 		}
 		else {
-			dormRtn = 0;
+			mainInterDubG_run = +mainInterDubG_runArr[i].value / 2;
 		}
-*/
+		if (mainInterDubG_peakArr[i] === undefined) {
+			mainInterDubG_peak = 0;
+		}
+		else {
+			mainInterDubG_peak = +mainInterDubG_peakArr[i].value;
+		}
+		var mainInterDubG_rise = mainInterDubG_run * mainInter_slope;
+		var mainInterDubG_hyp = Math.sqrt(Math.pow(mainInterDubG_rise, 2) + Math.pow(mainInterDubG_run, 2));
+		var mainInterDubG_surA = ((mainInterDubG_peak * mainInterDubG_hyp) * 2) + mainInterDubG_hyp;
 
+		if (mainInterOvr_lvn >= 0 && dubGToggleArr[i] === 1) {
+			if (rtnToggleArr[i] === 1 && dubGRtnToggleArr[i] === 1) {
+				var mainInter_totalRtn = mainInter_run * 2;
+			}
+			else if (rtnToggleArr[i] === 1 && dubGRtnToggleArr[i] === 0) {
+				mainInter_totalRtn = (mainInter_run * 2) - (mainInterDubG_run * 2);
+			}
+			else if (rtnToggleArr[i] === 0 && dubGRtnToggleArr[i] === 1) {
+				mainInter_totalRtn = mainInterDubG_run * 2;
+			}
+			else {
+				mainInter_totalRtn = 0;
+			}
+		}
+		else if (mainInterOvr_lvn >= 0 && dubGToggleArr[i] === 0 || mainInterOvr_lvn >= 0 && dubGToggleArr[i] === "break") {
+			if (rtnToggleArr === 1) {
+				mainInter_totalRtn = mainInter_run * 2;
+			}
+			else {
+				mainInter_totalRtn = 0;
+			}
+		}
+		else if (mainInterOvr_lvn < 0 && dubGToggleArr[i] === 1) {
+			if (rtnToggleArr[i] === 1 && dubGRtnToggleArr[i] === 1) {
+				mainInter_totalRtn = mainInterOvr_run * 2;
+			}
+			else if (rtnToggleArr[i] === 1 && dubGRtnToggleArr[i] === 0) {
+				mainInter_totalRtn = (mainInterOvr_run * 2) - (mainInterDubG_run * 2);
+			}
+			else if (rtnToggleArr[i] === 0 && dubGRtnToggleArr[i] === 1) {
+				mainInter_totalRtn = mainInterDubG_run * 2;
+			}
+			else {
+				mainInter_totalRtn = 0;
+			}
+		}
+		else if (mainInterOvr_lvn < 0 && dubGToggleArr[i] === 0 || mainInterOvr_lvn < 0 && dubGToggleArr[i] === "break") {
+			if (rtnToggleArr[i] === 1) {
+				mainInter_totalRtn = mainInterOvr_run * 2;
+			}
+			else {
+				mainInter_totalRtn = 0;
+			}
+		}
 
-		mainDorm_totalCap += 
-		mainDorm_peak 
-		+ mainDormOvr_peak 
-		- mainDormPie_peak 
-		+ mainDormPie_hip;
-		mainDorm_totalSurA += 
-		mainDorm_surA 
-//		+ mainDormOvr_surA 
-//		- mainDormOvrH_surA 
-		- mainDormCvr_surA
-		+ mainDormPie_surA 
-		- mainDormPieCvr_surA;
-		mainDorm_totalValley += 
-		mainDorm_valley;
+		mainInter_totalCap += 
+		mainInter_peak 
+		+ mainInterOvr_peak 
+		- mainInterPie_peak 
+		+ mainInterPie_hip;
+		mainInter_totalSurA += 
+		mainInter_surA 
+		+ mainInterOvr_surA 
+		- mainInterOvrH_surA 
+		- mainInterCvr_surA
+		+ mainInterPie_surA 
+		- mainInterPieCvr_surA;
+		+ mainInterDubG_surA;
+		+ mainInter_totalRtn;
+		mainInter_totalValley += 
+		mainInter_valley;
 	}
-	var totalSurA = (main_totalSurA + mainDorm_totalSurA) / 33.3;
-	var totalCap = (main_totalCap + mainDorm_totalCap) / 29.5;
-	var totalValley = mainDorm_totalValley / 8;
-
-	// *test* console.log(dormRtn);console.log(dubGRtnArr[dubGRtnArr.length - 1]);
+	var totalSurA = (main_totalSurA + mainInter_totalSurA) / 33.3;
+	var totalCap = (main_totalCap + mainInter_totalCap) / 29.5;
+	var totalValley = mainInter_totalValley / 8;
 
 	document.getElementById("total").innerHTML = 
 	"Total SurA: " 
