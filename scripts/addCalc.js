@@ -41,7 +41,18 @@ function add() {
 	var gableNavArr = document.getElementsByClassName("gableNav");
 	for (var i = 0; i < gableNavArr.length; i++) {
 		gableNavArr[i].onclick = function gable() {
-			subInput.removeChild(interPie_pitch);
+			if (shedInput.parentNode === subInput) {
+				subInput.removeChild(shedInput);
+				subInput.appendChild(gableInput);
+				gableInput.appendChild(done);
+				if (interPie_pitch.parentNode === gableInput) {
+					gableInput.removeChild(interPie_pitch);
+				}
+			}
+			else {
+				gableInput.removeChild(interPie_pitch);
+				subInput.appendChild(gableInput);
+			}
 		}
 	}
 	var hipNav = document.createElement("li");
@@ -51,37 +62,56 @@ function add() {
 	var hipNavArr = document.getElementsByClassName("hipNav");
 	for (var i = 0; i < hipNavArr.length; i++) {
 		hipNavArr[i].onclick = function hip() {
-			subInput.appendChild(interPie_pitch);
+			if (shedInput.parentNode === subInput) {
+				subInput.removeChild(shedInput);
+				subInput.appendChild(gableInput);
+				gableInput.appendChild(interPie_pitch);
+				gableInput.appendChild(done);
+			}
+			else {
+				gableInput.appendChild(interPie_pitch);
+			}
 		}
 	}
 	var shedNav = document.createElement("li");
 	shedNav.className = "shedNav";
 	shedNav.innerHTML = "Shed";
 	interNav.appendChild(shedNav);
+	var shedNavArr = document.getElementsByClassName("shedNav");
+	for (var i = 0; i < shedNavArr.length; i++) {
+		shedNavArr[i].onclick = function shed() {
+			subInput.removeChild(gableInput);
+			subInput.appendChild(shedInput);
+			shedInput.appendChild(done);
+		}
+	}
+	var gableInput = document.createElement("div");
+	gableInput.className = "gableInput";
+	subInput.appendChild(gableInput);
 	var dimAinter = document.createElement("input");
 	dimAinter.className = "dimAinter";
 	dimAinter.placeholder = "Dimension A";
 	dimAinter.value = 10;
-	subInput.appendChild(dimAinter);
+	gableInput.appendChild(dimAinter);
 	var dimBinter = document.createElement("input");
 	dimBinter.className = "dimBinter";
 	dimBinter.placeholder = "Dimension B";
 	dimBinter.value = 10;
-	subInput.appendChild(dimBinter);
+	gableInput.appendChild(dimBinter);
 	var inter_pitch = document.createElement("input");
 	inter_pitch.className = "inter_pitch";
 	inter_pitch.placeholder = "Pitch";
 	inter_pitch.value = 10;
-	subInput.appendChild(inter_pitch);
+	gableInput.appendChild(inter_pitch);
 	var dimCinter = document.createElement("input");
 	dimCinter.className = "dimCinter";
 	dimCinter.placeholder = "Dimension C";
 	dimCinter.value = 6;
-	subInput.appendChild(dimCinter);
+	gableInput.appendChild(dimCinter);
 	var dubG = document.createElement("p");
 	dubG.className = "dubG";
 	dubG.innerHTML = "dubG";
-	subInput.appendChild(dubG);
+	gableInput.appendChild(dubG);
 	var dubGArr = document.getElementsByClassName("dubG");
 	for (var i = 0; i < dubGArr.length; i++) {
 		dubGArr[i].onclick = function dubGToggle() {
@@ -89,27 +119,27 @@ function add() {
 				x = 1 - x;
 				dubGToggleArr.push(x);
 				dubG.style.color = "green";
-				subInput.appendChild(dubGRtn);
-				subInput.appendChild(dimEinter);
-				subInput.appendChild(dimFinter);
+				gableInput.appendChild(dubGRtn);
+				gableInput.appendChild(dimEinter);
+				gableInput.appendChild(dimFinter);
 			}
 			else if (x === 1) {
 				x = 1 - x;
 				dubGToggleArr.pop();
 				dubGToggleArr.push(x);
 				dubG.style.color = "white";
-				subInput.removeChild(dubGRtn);
-				subInput.removeChild(dimEinter);
-				subInput.removeChild(dimFinter);
+				gableInput.removeChild(dubGRtn);
+				gableInput.removeChild(dimEinter);
+				gableInput.removeChild(dimFinter);
 			}
 			else if (x === 0) {
 				x = 1 - x;
 				dubGToggleArr.pop();
 				dubGToggleArr.push(x);
 				dubG.style.color = "green";
-				subInput.appendChild(dubGRtn);
-				subInput.appendChild(dimEinter);
-				subInput.appendChild(dimFinter);
+				gableInput.appendChild(dubGRtn);
+				gableInput.appendChild(dimEinter);
+				gableInput.appendChild(dimFinter);
 			}
 		}
 	}
@@ -137,7 +167,7 @@ function add() {
 	var rtn = document.createElement("p");
 	rtn.className = "rtn";
 	rtn.innerHTML = "rtn";
-	subInput.appendChild(rtn);
+	gableInput.appendChild(rtn);
 	var rtnArr = document.getElementsByClassName("rtn");
 	for (var i = 0; i < rtnArr.length; i++) {
 		rtnArr[i].onclick = function rtnToggle() {
@@ -163,12 +193,21 @@ function add() {
 	dimFinter.placeholder = "Dimension F";
 	var interPie_pitch = document.createElement("input");
 	interPie_pitch.className = "interPie_pitch";
-	interPie_pitch.id = "interPie_pitch" + dynId;
 	interPie_pitch.placeholder = "Pie Pitch";
+	var shedInput = document.createElement("div");
+	shedInput.className = "shedInput";
+	var dimAshed = document.createElement("input");
+	dimAshed.className = "dimAshed";
+	dimAshed.placeholder = "Dimension A";
+	shedInput.appendChild(dimAshed);
+	var dimBshed = document.createElement("input");
+	dimBshed.className = "dimBshed";
+	dimBshed.placeholder = "Dimension B";
+	shedInput.appendChild(dimBshed);
 	var done = document.createElement("button");
 	done.className = "done";
 	done.innerHTML = "Done";
-	subInput.appendChild(done);
+	gableInput.appendChild(done);
 	var doneArr = document.getElementsByClassName("done");
 	for (var i = 0; i < doneArr.length; i++) {
 		doneArr[i].onclick = function done() {
@@ -192,11 +231,11 @@ document.getElementById("calc").onclick = function calc() {
 
 	// main
 
-	var main_run = +document.getElementById("dimAmain").value / 2;
+	var main_run = +document.getElementById("dimBmain").value / 2;
 	var main_slope = +document.getElementById("main_pitch").value / 12;
 	var main_rise = main_run * main_slope;
 	var main_hyp = Math.sqrt(Math.pow(main_rise, 2) + Math.pow(main_run, 2));
-	var main_surA = (+document.getElementById("dimBmain").value * main_hyp) * 2;
+	var main_surA = (+document.getElementById("dimAmain").value * main_hyp) * 2;
 
 	var mainPie_slope = (+document.getElementById("mainPie_pitch").value) / 12;
 	var mainPie_peak = main_rise / mainPie_slope;
@@ -206,7 +245,11 @@ document.getElementById("calc").onclick = function calc() {
 	var mainPieCvr_surA = (mainPie_peak * main_hyp) * 2;
 
 	var main_totalSurA = (main_surA + mainPie_surA - mainPieCvr_surA);
-	var main_totalCap = (+document.getElementById("dimBmain").value - (mainPie_peak * 2) + mainPie_hip);
+	var main_totalCap = (+document.getElementById("dimAmain").value - (mainPie_peak * 2) + mainPie_hip);
+
+	if ((mainPie_peak * 2) > +document.getElementById("dimAmain").value) {
+		console.log("Check Pie Pitch");
+	}
 
 	// mainInter
 
@@ -218,9 +261,12 @@ document.getElementById("calc").onclick = function calc() {
 		var mainInterDubG_runArr = document.getElementsByClassName("dimEinter");
 		var mainInterDubG_peakArr = document.getElementsByClassName("dimFinter");
 		var mainInterPie_pitchArr = document.getElementsByClassName("interPie_pitch");
+		var dimAshedArr = document.getElementsByClassName("dimAshed");
+		var dimBshedArr = document.getElementsByClassName("dimBshed");
 		var mainInter_totalSurA = 0;
 		var mainInter_totalCap = 0;
 		var mainInter_totalValley = 0;
+
 	
 	for (var i = 0; i < mainInter_runArr.length; i++) {
 
@@ -347,6 +393,14 @@ document.getElementById("calc").onclick = function calc() {
 				mainInter_totalRtn = 0;
 			}
 		}
+		if (dimAshedArr[i] === undefined || dimBshedArr[i] === undefined) {
+			var mainShed_surA = 0;
+		}
+		else {
+			var dimAshed = +dimAshedArr[i].value;
+			var dimBshed = +dimBshedArr[i].value;
+			mainShed_surA = dimAshed * dimBshed;
+		}
 
 		mainInter_totalCap += 
 		mainInter_peak 
@@ -362,6 +416,7 @@ document.getElementById("calc").onclick = function calc() {
 		- mainInterPieCvr_surA;
 		+ mainInterDubG_surA;
 		+ mainInter_totalRtn;
+		+ mainShed_surA;
 		mainInter_totalValley += 
 		mainInter_valley;
 	}
