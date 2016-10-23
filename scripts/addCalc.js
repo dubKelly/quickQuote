@@ -27,6 +27,7 @@ function add() {
 	document.getElementById("mainInput").style.display = "none";
 	document.getElementById("mainList").style.display = "block";
 	var interInput = document.getElementById("interInput");
+	var hack = document.getElementById("hack");
 	var subInput = document.createElement("div");
 	subInput.className = "inner";
 	subInput.id = "subInput" + dynId;
@@ -42,7 +43,7 @@ function add() {
 	for (var i = 0; i < gableNavArr.length; i++) {
 		gableNavArr[i].onclick = function gable() {
 			if (shedInput.parentNode === subInput) {
-				subInput.removeChild(shedInput);
+				hack.appendChild(shedInput);
 				subInput.appendChild(gableInput);
 				gableInput.appendChild(done);
 				if (interPie_pitch.parentNode === gableInput) {
@@ -63,7 +64,7 @@ function add() {
 	for (var i = 0; i < hipNavArr.length; i++) {
 		hipNavArr[i].onclick = function hip() {
 			if (shedInput.parentNode === subInput) {
-				subInput.removeChild(shedInput);
+				hack.appendChild(shedInput);
 				subInput.appendChild(gableInput);
 				gableInput.appendChild(interPie_pitch);
 				gableInput.appendChild(done);
@@ -80,7 +81,7 @@ function add() {
 	var shedNavArr = document.getElementsByClassName("shedNav");
 	for (var i = 0; i < shedNavArr.length; i++) {
 		shedNavArr[i].onclick = function shed() {
-			subInput.removeChild(gableInput);
+			hack.appendChild(gableInput);
 			subInput.appendChild(shedInput);
 			shedInput.appendChild(done);
 		}
@@ -196,6 +197,7 @@ function add() {
 	interPie_pitch.placeholder = "Pie Pitch";
 	var shedInput = document.createElement("div");
 	shedInput.className = "shedInput";
+	hack.appendChild(shedInput);
 	var dimAshed = document.createElement("input");
 	dimAshed.className = "dimAshed";
 	dimAshed.placeholder = "Dimension A";
@@ -266,7 +268,6 @@ document.getElementById("calc").onclick = function calc() {
 		var mainInter_totalSurA = 0;
 		var mainInter_totalCap = 0;
 		var mainInter_totalValley = 0;
-
 	
 	for (var i = 0; i < mainInter_runArr.length; i++) {
 
@@ -394,13 +395,14 @@ document.getElementById("calc").onclick = function calc() {
 			}
 		}
 		if (dimAshedArr[i] === undefined || dimBshedArr[i] === undefined) {
-			var mainShed_surA = 0;
+			var dimAshed = 0;
+			var dimBshed = 0;
 		}
 		else {
-			var dimAshed = +dimAshedArr[i].value;
-			var dimBshed = +dimBshedArr[i].value;
-			mainShed_surA = dimAshed * dimBshed;
+			dimAshed = +dimAshedArr[i].value;
+			dimBshed = +dimBshedArr[i].value;
 		}
+		var mainShed_surA = dimAshed * dimBshed;
 
 		mainInter_totalCap += 
 		mainInter_peak 
@@ -413,9 +415,9 @@ document.getElementById("calc").onclick = function calc() {
 		- mainInterOvrH_surA 
 		- mainInterCvr_surA
 		+ mainInterPie_surA 
-		- mainInterPieCvr_surA;
-		+ mainInterDubG_surA;
-		+ mainInter_totalRtn;
+		- mainInterPieCvr_surA
+		+ mainInterDubG_surA
+		+ mainInter_totalRtn
 		+ mainShed_surA;
 		mainInter_totalValley += 
 		mainInter_valley;
